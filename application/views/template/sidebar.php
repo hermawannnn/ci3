@@ -65,6 +65,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('pembelajaran'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'pembelajaran') ? 'active' : ''; ?>">
+                <i class="nav-icon fas fa-book-open"></i>
+              <p>
+                Pembelajaran
+              </p>
+            </a>
+          </li>
           <?php endif; ?>
         </ul>
       </nav>
