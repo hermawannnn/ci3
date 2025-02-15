@@ -69,5 +69,11 @@ class User_model extends CI_Model {
     {
         return $this->db->delete('users', array('id' => $id));
     }
+
+    public function get_all()
+    {
+        $query = $this->db->get('users');
+        return $query->result();
+    }
 }
 ?>

@@ -1,86 +1,43 @@
 <?php
-class Pembelajaran extends CI_Controller {
+class Pembelajaran_model extends CI_Model {
 
     public function __construct()
     {
         parent::__construct();
-        // Cek apakah user sudah login
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-        // Check if user is admin
-        if ($this->session->userdata('role') !== 'admin') {
-            show_error('You do not have permission to access this page.', 403);
-        }
-        $this->load->model('pelajaran_model', 'kelas_model', 'user_model');
     }
 
-    public function index()
+    public function get_all()
     {
-        // Mengambil data pembelajaran dari model
-        $data['pelajaran'] = $this->pelajaran_model->get_all();
-
-        // Menampilkan halaman pembelajaran dengan data
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('pembelajaran/pembelajaran_view', $data);
-        $this->load->view('template/footer');
+        // Mengambil semua data pembelajaran
+        $query = $this->db->query('SELECT id, pelajaran_id, kelas_id, user_id FROM pembelajaran');
+        return $query->result();
     }
 
-    public function tambah()
-    {
-        // Menampilkan form tambah pembelajaran
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('pembelajaran/tambah_pembelajaran_view');
-        $this->load->view('template/footer');
-    }
-
-    public function simpan()
+    public function insert($data)
     {
         // Menyimpan data pembelajaran ke database
-        $data = array(
-            // 'unit' => $this->input->post('unit'),
-            'nama_pembelajaran' => $this->input->post('nama_pembelajaran')
-            // 'wali_pembelajaran' => $this->input->post('wali_pembelajaran')
-        );
-        $this->pembelajaran_model->insert($data);
-        redirect('pembelajaran');
+        return $this->db->insert('pembelajaran', $data);
     }
 
-    public function edit($id)
+    public function get_by_id($id)
     {
         // Mengambil data pembelajaran berdasarkan id
-        $data['pembelajaran'] = $this->pembelajaran_model->get_by_id($id);
-
-        // Menampilkan form edit pembelajaran
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('pembelajaran/edit_pembelajaran_view', $data);
-        $this->load->view('template/footer');
+        $query = $this->db->get_where('pembelajaran', array('id' => $id));
+        return $query->row();
     }
 
-    public function update()
+    public function update($id, $data)
     {
         // Mengupdate data pembelajaran di database
-        $id = $this->input->post('id');
-        $data = array(
-            'nama_pembelajaran' => $this->input->post('nama_pembelajaran')
-            // 'unit' => $this->input->post('unit'),
-            // 'wali_pembelajaran' => $this->input->post('wali_pembelajaran')
-        );
-        $this->pembelajaran_model->update($id, $data);
-        redirect('pembelajaran');
+        $this->db->where('id', $id);
+        return $this->db->update('pembelajaran', $data);
     }
 
-    public function hapus($id)
+    public function delete($id)
     {
-        $this->load->model('Siswa_model');
-
-        // Proceed with deletion
-        $this->pembelajaran_model->delete($id);
-        $this->session->set_flashdata('success', 'Pelajaran berhasil dihapus.');
-        redirect('pembelajaran');
+        // Menghapus data pembelajaran berdasarkan id
+        $this->db->where('id', $id);
+        return $this->db->delete('pembelajaran');
     }
 }
 ?>

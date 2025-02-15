@@ -13,17 +13,21 @@ class Kelas extends CI_Controller {
             show_error('You do not have permission to access this page.', 403);
         }
         $this->load->model('kelas_model');
+        $this->load->model('user_model');
+        $this->load->model('unit_model');
     }
 
     public function index()
     {
         // Mengambil data kelas dari model
         $data['kelas'] = $this->kelas_model->get_all();
+        $data['users'] = $this->user_model->get_all();
+        $data['units'] = $this->unit_model->get_all();
 
         // Menampilkan halaman kelas dengan data
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
-        $this->load->view('kelas/kelas_view', $data);
+        $this->load->view('kelas_view', $data);
         $this->load->view('template/footer');
     }
 

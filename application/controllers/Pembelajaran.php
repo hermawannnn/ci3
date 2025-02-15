@@ -13,26 +13,25 @@ class Pembelajaran extends CI_Controller {
             show_error('You do not have permission to access this page.', 403);
         }
         $this->load->model('pelajaran_model');
+        $this->load->model('pembelajaran_model');
+        $this->load->model('kelas_model');
+        $this->load->model('user_model');
+        $this->load->model('unit_model');
     }
 
     public function index()
     {
         // Mengambil data pembelajaran dari model
+        $data['pembelajaran'] = $this->pembelajaran_model->get_all();
         $data['pelajaran'] = $this->pelajaran_model->get_all();
+        $data['kelas'] = $this->kelas_model->get_all();
+        $data['users'] = $this->user_model->get_all_users();
+        $data['units'] = $this->unit_model->get_all();
 
         // Menampilkan halaman pembelajaran dengan data
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
-        $this->load->view('pembelajaran/pembelajaran_view', $data);
-        $this->load->view('template/footer');
-    }
-
-    public function tambah()
-    {
-        // Menampilkan form tambah pembelajaran
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('pembelajaran/tambah_pembelajaran_view');
+        $this->load->view('pembelajaran_view', $data);
         $this->load->view('template/footer');
     }
 
@@ -40,7 +39,10 @@ class Pembelajaran extends CI_Controller {
     {
         // Menyimpan data pembelajaran ke database
         $data = array(
-            'nama_pembelajaran' => $this->input->post('nama_pembelajaran')
+            'nama_pelajaran' => $this->input->post('nama_pelajaran'),
+            'nama_kelas' => $this->input->post('nama_kelas'),
+            'guru_mapel' => $this->input->post('guru_mapel'),
+            'unit' => $this->input->post('unit')
         );
         $this->pembelajaran_model->insert($data);
         redirect('pembelajaran');
@@ -63,7 +65,10 @@ class Pembelajaran extends CI_Controller {
         // Mengupdate data pembelajaran di database
         $id = $this->input->post('id');
         $data = array(
-            'nama_pembelajaran' => $this->input->post('nama_pembelajaran')
+            'nama_pelajaran' => $this->input->post('nama_pelajaran'),
+            'nama_kelas' => $this->input->post('nama_kelas'),
+            'guru_mapel' => $this->input->post('guru_mapel'),
+            'unit' => $this->input->post('unit')
         );
         $this->pembelajaran_model->update($id, $data);
         redirect('pembelajaran');

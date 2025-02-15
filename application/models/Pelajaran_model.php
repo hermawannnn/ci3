@@ -16,6 +16,7 @@ class Pelajaran_model extends CI_Model {
     public function insert($data)
     {
         // Menyimpan data pelajaran ke database
+        // $data['unit'] = 'default_unit'; // Add the 'unit' field to the data array
         return $this->db->insert('pelajaran', $data);
     }
 

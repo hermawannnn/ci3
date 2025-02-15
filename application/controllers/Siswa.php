@@ -24,7 +24,7 @@ class Siswa extends CI_Controller {
         // Menampilkan halaman siswa dengan data
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
-        $this->load->view('siswa/siswa_view', $data);
+        $this->load->view('siswa_view', $data);
         $this->load->view('template/footer');
     }
 
@@ -39,23 +39,6 @@ class Siswa extends CI_Controller {
         );
         $this->siswa_model->insert($data);
         redirect('siswa');
-    }
-
-    public function edit($id)
-    {
-        // Mengambil data siswa berdasarkan id
-        $data['siswa'] = $this->siswa_model->get_by_id($id);
-        // Mengambil data kelas dari model
-        $data['kelas'] = $this->kelas_model->get_all();
-        if (empty($data['kelas'])) {
-            show_error('Data kelas tidak ditemukan.');
-        }
-
-        // Menampilkan form edit siswa
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('siswa/edit_siswa_view', $data);
-        $this->load->view('template/footer');
     }
 
     public function update()
