@@ -1,5 +1,6 @@
 <?php
-class Siswa extends CI_Controller {
+class Siswa extends CI_Controller
+{
 
     public function __construct()
     {
@@ -62,4 +63,3 @@ class Siswa extends CI_Controller {
         redirect('siswa');
     }
 }
-?>

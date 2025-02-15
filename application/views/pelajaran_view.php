@@ -30,39 +30,39 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <?php if ($this->session->flashdata('success')): ?>
-                            <div class="alert alert-success">
-                                <?php echo $this->session->flashdata('success'); ?>
-                            </div>
+                                <div class="alert alert-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
+                                </div>
                             <?php endif; ?>
                             <?php if ($this->session->flashdata('error')): ?>
-                            <div class="alert alert-danger">
-                                <?php echo $this->session->flashdata('error'); ?>
-                            </div>
+                                <div class="alert alert-danger">
+                                    <?php echo $this->session->flashdata('error'); ?>
+                                </div>
                             <?php endif; ?>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Nama Mata Pelajaran</th>
-                                    <th>Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nama Mata Pelajaran</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($pelajaran as $row): ?>
-                                <tr>
-                                    <td><?php echo $row->nama_pelajaran; ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $row->id; ?>">Edit</button>
-                                        <a href="<?php echo site_url('pelajaran/hapus/'.$row->id); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pelajaran ini?');">Hapus</a>
-                                        
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
+                                    <?php foreach ($pelajaran as $row): ?>
+                                        <tr>
+                                            <td><?php echo $row->nama_pelajaran; ?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $row->id; ?>">Edit</button>
+                                                <a href="<?php echo site_url('pelajaran/hapus/' . $row->id); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pelajaran ini?');">Hapus</a>
+
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <th>Nama Mata Pelajaran</th>
-                                    <th>Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nama Mata Pelajaran</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -81,40 +81,40 @@
 <!-- /.content-wrapper -->
 
 <?php foreach ($pelajaran as $row): ?>
-<div class="modal fade" id="modal-edit-<?php echo $row->id; ?>">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Pelajaran</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form action="<?php echo site_url('pelajaran/update'); ?>" method="post">
-                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
-                        <div class="form-group">
-                            <label for="nama_pelajaran">Nama Mata Pelajaran</label>
-                            <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" value="<?php echo $row->nama_pelajaran; ?>" required>
-                        </div>
-                        <!-- <div class="form-group">
+    <div class="modal fade" id="modal-edit-<?php echo $row->id; ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Pelajaran</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <form action="<?php echo site_url('pelajaran/update'); ?>" method="post">
+                            <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                            <div class="form-group">
+                                <label for="nama_pelajaran">Nama Mata Pelajaran</label>
+                                <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" value="<?php echo $row->nama_pelajaran; ?>" required>
+                            </div>
+                            <!-- <div class="form-group">
                             <label for="unit">Unit</label>
                             <input type="text" class="form-control" id="unit" name="unit" value="<?php echo $row->unit; ?>" required>
                         </div> -->
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-            </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+    <!-- /.modal -->
 <?php endforeach; ?>
 
 <!-- Modal Tambah -->

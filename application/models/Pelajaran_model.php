@@ -1,5 +1,6 @@
 <?php
-class Pelajaran_model extends CI_Model {
+class Pelajaran_model extends CI_Model
+{
 
     public function __construct()
     {
@@ -49,4 +50,3 @@ class Pelajaran_model extends CI_Model {
         return $this->db->count_all_results();
     }
 }
-?>

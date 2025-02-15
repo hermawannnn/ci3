@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class User extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         // Load necessary models, libraries, etc.
         $this->load->model('user_model');
@@ -11,7 +13,8 @@ class User extends CI_Controller {
         $this->check_access();
     }
 
-    private function check_access() {
+    private function check_access()
+    {
         // Check if user is logged in
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
@@ -22,7 +25,8 @@ class User extends CI_Controller {
         }
     }
 
-    public function index() {
+    public function index()
+    {
         // Load a view or perform some action
         $data['users'] = $this->user_model->get_all_users();
         $this->load->view('template/header');
@@ -31,7 +35,8 @@ class User extends CI_Controller {
         $this->load->view('template/footer');
     }
 
-    public function tambah() {
+    public function tambah()
+    {
 
         // Handle form submission and create a new user
         $this->load->helper('form');
@@ -51,7 +56,8 @@ class User extends CI_Controller {
         }
     }
 
-    public function simpan() {
+    public function simpan()
+    {
         // Handle form submission and create a new user
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -70,7 +76,8 @@ class User extends CI_Controller {
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         // Handle form submission and update an existing user
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -91,10 +98,10 @@ class User extends CI_Controller {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         // Delete a user
         $this->user_model->delete_user($id);
         redirect('user');
     }
 }
-?>

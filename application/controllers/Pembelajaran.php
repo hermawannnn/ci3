@@ -1,5 +1,6 @@
 <?php
-class Pembelajaran extends CI_Controller {
+class Pembelajaran extends CI_Controller
+{
 
     public function __construct()
     {
@@ -12,11 +13,7 @@ class Pembelajaran extends CI_Controller {
         if ($this->session->userdata('role') !== 'admin') {
             show_error('You do not have permission to access this page.', 403);
         }
-        $this->load->model('pelajaran_model');
-        $this->load->model('pembelajaran_model');
-        $this->load->model('kelas_model');
-        $this->load->model('user_model');
-        $this->load->model('unit_model');
+        $this->load->model(array('pelajaran_model', 'pembelajaran_model', 'kelas_model', 'user_model', 'unit_model'));
     }
 
     public function index()
@@ -25,7 +22,7 @@ class Pembelajaran extends CI_Controller {
         $data['pembelajaran'] = $this->pembelajaran_model->get_all();
         $data['pelajaran'] = $this->pelajaran_model->get_all();
         $data['kelas'] = $this->kelas_model->get_all();
-        $data['users'] = $this->user_model->get_all_users();
+        $data['users'] = $this->user_model->get_all();
         $data['units'] = $this->unit_model->get_all();
 
         // Menampilkan halaman pembelajaran dengan data
@@ -37,12 +34,13 @@ class Pembelajaran extends CI_Controller {
 
     public function simpan()
     {
-        // Menyimpan data pembelajaran ke database
+        // Menyimpan data siswa ke database
         $data = array(
-            'nama_pelajaran' => $this->input->post('nama_pelajaran'),
-            'nama_kelas' => $this->input->post('nama_kelas'),
-            'guru_mapel' => $this->input->post('guru_mapel'),
-            'unit' => $this->input->post('unit')
+            // mengambil nilai dari form input berdasarkan nama 'pelajaran_id' dan disimpan dalam array $data
+            'pelajaran_id' => $this->input->post('pelajaran_id'),
+            'kelas_id' => $this->input->post('kelas_id'),
+            'user_id' => $this->input->post('user_id'),
+            'unit_id' => $this->input->post('unit_id')
         );
         $this->pembelajaran_model->insert($data);
         redirect('pembelajaran');
@@ -84,4 +82,3 @@ class Pembelajaran extends CI_Controller {
         redirect('pembelajaran');
     }
 }
-?>

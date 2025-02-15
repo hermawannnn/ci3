@@ -1,5 +1,6 @@
 <?php
-class Siswa_model extends CI_Model {
+class Siswa_model extends CI_Model
+{
 
     public function __construct()
     {
@@ -40,9 +41,9 @@ class Siswa_model extends CI_Model {
         return $this->db->delete('siswa');
     }
 
-    public function count_by_kelas($kelas_id) {
+    public function count_by_kelas($kelas_id)
+    {
         $this->db->where('kelas_id', $kelas_id);
         return $this->db->count_all_results('siswa');
     }
 }
-?>

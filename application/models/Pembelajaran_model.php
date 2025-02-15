@@ -1,5 +1,6 @@
 <?php
-class Pembelajaran_model extends CI_Model {
+class Pembelajaran_model extends CI_Model
+{
 
     public function __construct()
     {
@@ -9,7 +10,7 @@ class Pembelajaran_model extends CI_Model {
     public function get_all()
     {
         // Mengambil semua data pembelajaran
-        $query = $this->db->query('SELECT id, pelajaran_id, kelas_id, user_id FROM pembelajaran');
+        $query = $this->db->query('SELECT * FROM pembelajaran a JOIN pelajaran b ON a.pelajaran_id = b.id JOIN kelas c ON a.kelas_id = c.id JOIN users d ON a.user_id = d.id JOIN units e ON a.unit_id = e.id');
         return $query->result();
     }
 
@@ -40,4 +41,3 @@ class Pembelajaran_model extends CI_Model {
         return $this->db->delete('pembelajaran');
     }
 }
-?>

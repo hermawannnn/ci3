@@ -1,5 +1,6 @@
 <?php
-class Unit_model extends CI_Model {
+class Unit_model extends CI_Model
+{
 
     public function get_all()
     {
@@ -24,4 +25,3 @@ class Unit_model extends CI_Model {
         return $this->db->delete('units');
     }
 }
-?>
