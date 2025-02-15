@@ -25,7 +25,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Siswa</h3>
-                            <a href="<?php echo site_url('siswa/tambah'); ?>" class="btn btn-success float-right">Tambah Siswa</a>
+                            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+                                Tambah Siswa
+                            </button>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -82,3 +84,49 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Tambah Siswa</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="card-body">
+                <form action="<?php echo site_url('siswa/simpan'); ?>" method="post">
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nis">NIS</label>
+                        <input type="text" class="form-control" id="nis" name="nis" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nisn">NISN</label>
+                        <input type="text" class="form-control" id="nisn" name="nisn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kelas">Kelas</label>
+                        <select class="form-control" id="kelas" name="kelas" required>
+                            <?php foreach ($kelas as $row): ?>
+                            <option value="<?php echo $row->id; ?>"><?php echo $row->nama_kelas; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

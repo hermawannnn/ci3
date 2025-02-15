@@ -17,28 +17,14 @@ class Siswa extends CI_Controller {
 
     public function index()
     {
-        // Mengambil data siswa dari model
+        // Mengambil data siswa dan kelas dari model
         $data['siswa'] = $this->siswa_model->get_all();
+        $data['kelas'] = $this->kelas_model->get_all();
 
         // Menampilkan halaman siswa dengan data
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
         $this->load->view('siswa/siswa_view', $data);
-        $this->load->view('template/footer');
-    }
-
-    public function tambah()
-    {
-        // Mengambil data kelas dari model
-        $data['kelas'] = $this->kelas_model->get_all();
-        if (empty($data['kelas'])) {
-            show_error('Data kelas tidak ditemukan.');
-        }
-
-        // Menampilkan form tambah siswa
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('siswa/tambah_siswa_view', $data);
         $this->load->view('template/footer');
     }
 

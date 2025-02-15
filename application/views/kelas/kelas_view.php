@@ -25,7 +25,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Kelas</h3>
-                            <a href="<?php echo site_url('kelas/tambah'); ?>" class="btn btn-success float-right">Tambah Kelas</a>
+                            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+                                Tambah Kelas
+                            </button>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -81,3 +83,46 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Tambah Kelas</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="card-body">
+                <form action="<?php echo site_url('kelas/simpan'); ?>" method="post">
+                    <div class="form-group">
+                        <label for="nama">Unit</label>
+                        <select class="form-control" id="nama" name="unit" required>
+                            <option value="Primary">Primary</option>
+                            <option value="Secondary">Secondary</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nis">Nama Kelas</label>
+                        <input type="text" class="form-control" id="nis" name="nama_kelas" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nisn">Wali Kelas</label>
+                        <input type="text" class="form-control" id="nisn" name="wali_kelas" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
