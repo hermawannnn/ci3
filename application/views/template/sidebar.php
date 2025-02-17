@@ -63,18 +63,6 @@
               </p>
             </a>
           </li>
-        <?php endif; ?>
-        <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('role') == 'guru'): ?>
-          <li class="nav-item">
-            <a href="<?php echo site_url('rapormid'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Rapor Mid Semester
-              </p>
-            </a>
-          </li>
-          
-          
           <li class="nav-item">
             <a href="<?php echo site_url('pembelajaran'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'pembelajaran') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book-open"></i>
@@ -82,6 +70,38 @@
                 Pembelajaran
               </p>
             </a>
+          </li>
+        <?php endif; ?>
+        <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('role') == 'guru'): ?>
+
+
+
+
+
+
+
+          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nts' || $this->uri->segment(1) == 'rapormid') ? 'menu-open' : ''; ?>">
+            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'nts' || $this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Nilai Tengah Semester
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('nts'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'nts') ? 'active' : ''; ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Input NTS</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('rapormid'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Rapor Mid Semester</p>
+                </a>
+              </li>
+            </ul>
           </li>
         <?php endif; ?>
       </ul>

@@ -99,7 +99,7 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
+<!-- Edit Modal -->
 <?php foreach ($kelas as $row): ?>
     <div class="modal fade" id="modal-edit-<?php echo $row->id; ?>">
         <div class="modal-dialog">
@@ -131,9 +131,11 @@
                             <label for="nisn">Wali Kelas</label>
                             <select class="form-control" id="nisn" name="wali_kelas" required>
                                 <?php foreach ($users as $user): ?>
-                                    <option value="<?php echo $user->id; ?>" <?php echo $row->wali_kelas == $user->id ? 'selected' : ''; ?>>
-                                        <?php echo $user->nama; ?>
-                                    </option>
+                                    <?php if ($user->role == 'guru'): ?>
+                                        <option value="<?php echo $user->id; ?>" <?php echo $row->wali_kelas == $user->id ? 'selected' : ''; ?>>
+                                            <?php echo $user->nama; ?>
+                                        </option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>

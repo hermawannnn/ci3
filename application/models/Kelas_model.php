@@ -9,9 +9,10 @@ class Kelas_model extends CI_Model
 
     public function get_all()
     {
-        // Mengambil semua data kelas
-        $query = $this->db->query('SELECT * FROM kelas');
-        return $query->result();
+        $this->db->select('kelas.*, users.nama as nama_wali_kelas');
+        $this->db->from('kelas');
+        $this->db->join('users', 'users.id = kelas.wali_kelas', 'left');
+        return $this->db->get()->result();
     }
 
     public function insert($data)
@@ -22,9 +23,11 @@ class Kelas_model extends CI_Model
 
     public function get_by_id($id)
     {
-        // Mengambil data kelas berdasarkan id
-        $query = $this->db->get_where('kelas', array('id' => $id));
-        return $query->row();
+        $this->db->select('kelas.*, users.nama as nama_wali_kelas');
+        $this->db->from('kelas');
+        $this->db->join('users', 'users.id = kelas.wali_kelas', 'left');
+        $this->db->where('kelas.id', $id);
+        return $this->db->get()->row();
     }
 
     public function update($id, $data)
