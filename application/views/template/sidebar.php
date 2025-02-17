@@ -40,6 +40,22 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?php echo site_url('kelas'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'kelas') ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
+              <p>
+                Kelas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('siswa'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'siswa') ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-user-graduate"></i>
+              <p>
+                Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?php echo site_url('pelajaran'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'pelajaran') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -50,21 +66,15 @@
         <?php endif; ?>
         <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('role') == 'guru'): ?>
           <li class="nav-item">
-            <a href="<?php echo site_url('siswa'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'siswa') ? 'active' : ''; ?>">
-              <i class="nav-icon fas fa-user-graduate"></i>
+            <a href="<?php echo site_url('rapormid'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Siswa
+                Rapor Mid Semester
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo site_url('kelas'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'kelas') ? 'active' : ''; ?>">
-              <i class="nav-icon fas fa-chalkboard-teacher"></i>
-              <p>
-                Kelas
-              </p>
-            </a>
-          </li>
+          
+          
           <li class="nav-item">
             <a href="<?php echo site_url('pembelajaran'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'pembelajaran') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book-open"></i>

@@ -110,41 +110,39 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <form action="<?php echo site_url('kelas/update'); ?>" method="post">
-                            <input type="hidden" name="id" value="<?php echo $row->id; ?>">
-                            <div class="form-group">
-                                <label for="nama">Unit</label>
-                                <select class="form-control" id="nama" name="unit" required>
-                                    <?php foreach ($units as $unit): ?>
-                                        <option value="<?php echo $unit->id; ?>" <?php echo $row->unit == $unit->id ? 'selected' : ''; ?>>
-                                            <?php echo $unit->nama_unit; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="nis">Nama Kelas</label>
-                                <input type="text" class="form-control" id="nis" name="nama_kelas" value="<?php echo $row->nama_kelas; ?>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nisn">Wali Kelas</label>
-                                <select class="form-control" id="nisn" name="wali_kelas" required>
-                                    <?php foreach ($users as $user): ?>
-                                        <option value="<?php echo $user->id; ?>" <?php echo $row->wali_kelas == $user->id ? 'selected' : ''; ?>>
-                                            <?php echo $user->nama; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </form>
+                <form action="<?php echo site_url('kelas/update'); ?>" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                        <div class="form-group">
+                            <label for="nama">Unit</label>
+                            <select class="form-control" id="nama" name="unit" required>
+                                <?php foreach ($units as $unit): ?>
+                                    <option value="<?php echo $unit->id; ?>" <?php echo $row->unit == $unit->id ? 'selected' : ''; ?>>
+                                        <?php echo $unit->nama_unit; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nis">Nama Kelas</label>
+                            <input type="text" class="form-control" id="nis" name="nama_kelas" value="<?php echo $row->nama_kelas; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nisn">Wali Kelas</label>
+                            <select class="form-control" id="nisn" name="wali_kelas" required>
+                                <?php foreach ($users as $user): ?>
+                                    <option value="<?php echo $user->id; ?>" <?php echo $row->wali_kelas == $user->id ? 'selected' : ''; ?>>
+                                        <?php echo $user->nama; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
             </div>
             <!-- /.modal-content -->
         </div>
@@ -162,42 +160,35 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form action="<?php echo site_url('kelas/simpan'); ?>" method="post">
-                        <div class="form-group">
-                            <label for="nama">Unit</label>
-                            <select class="form-control" id="nama" name="unit" required>
-                                <?php foreach ($units as $unit): ?>
-                                    <option value="<?php echo $unit->id; ?>"><?php echo $unit->nama_unit; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="nis">Nama Kelas</label>
-                            <input type="text" class="form-control" id="nis" name="nama_kelas" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nisn">Wali Kelas</label>
-                            <select class="form-control" id="nisn" name="wali_kelas" required>
-                                <?php foreach ($users as $user): ?>
-                                    <option value="<?php echo $user->id; ?>">
-                                        <?php echo $user->nama; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </form>
+            <form action="<?php echo site_url('kelas/simpan'); ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Unit</label>
+                        <select class="form-control" name="unit" required>
+                            <?php foreach ($units as $unit): ?>
+                                <option value="<?php echo $unit->id; ?>"><?php echo $unit->nama_unit; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Kelas</label>
+                        <input type="text" class="form-control" name="nama_kelas" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Wali Kelas</label>
+                        <select class="form-control" name="wali_kelas" required>
+                            <?php foreach ($users as $user): ?>
+                                <option value="<?php echo $user->id; ?>"><?php echo $user->nama; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-            </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->

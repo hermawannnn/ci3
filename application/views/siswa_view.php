@@ -127,11 +127,8 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
 <?php endforeach; ?>
 
 <div class="modal fade" id="modal-default">
@@ -174,8 +171,5 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
             </div>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->

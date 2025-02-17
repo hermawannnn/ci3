@@ -1,5 +1,5 @@
 <!-- Main Footer -->
-<footer class="main-footer">
+<footer class="main-footer no-print">
   <strong>Copyright &copy; 2025 Hermawan | Ananda Islamic School</a>.</strong>
   All rights reserved.
   <div class="float-right d-none d-sm-inline-block">

@@ -91,30 +91,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="card-body">
-                        <form action="<?php echo site_url('pelajaran/update'); ?>" method="post">
-                            <input type="hidden" name="id" value="<?php echo $row->id; ?>">
-                            <div class="form-group">
-                                <label for="nama_pelajaran">Nama Mata Pelajaran</label>
-                                <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" value="<?php echo $row->nama_pelajaran; ?>" required>
-                            </div>
-                            <!-- <div class="form-group">
-                            <label for="unit">Unit</label>
-                            <input type="text" class="form-control" id="unit" name="unit" value="<?php echo $row->unit; ?>" required>
-                        </div> -->
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <form action="<?php echo site_url('pelajaran/update'); ?>" method="post">
+                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                        <div class="form-group">
+                            <label for="nama_pelajaran">Nama Mata Pelajaran</label>
+                            <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" value="<?php echo $row->nama_pelajaran; ?>" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
 <?php endforeach; ?>
 
 <!-- Modal Tambah -->
@@ -133,10 +121,6 @@
                         <label for="nama_pelajaran">Nama Mata Pelajaran</label>
                         <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" required>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="unit">Unit</label>
-                        <input type="text" class="form-control" id="unit" name="unit" required>
-                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
