@@ -5,6 +5,7 @@ class Siswa_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        $this->load->database();
     }
 
     public function get_all()
@@ -45,5 +46,32 @@ class Siswa_model extends CI_Model
     {
         $this->db->where('kelas_id', $kelas_id);
         return $this->db->count_all_results('siswa');
+    }
+
+    public function get_siswa_by_kelas($kelas_id)
+    {
+        $this->db->where('kelas_id', $kelas_id);
+        $query = $this->db->get('siswa');
+        return $query->result();
+    }
+
+    public function get_all_siswa()
+    {
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_siswa_by_id($siswa_id)
+    {
+        $this->db->where('id', $siswa_id);
+        $query = $this->db->get('siswa');
+
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        } else {
+            return null;
+        }
     }
 }

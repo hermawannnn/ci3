@@ -1,25 +1,39 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class Rapormid extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        // Cek apakah user sudah login
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-        // Check if user is admin
-        if ($this->session->userdata('role') == 'admin' && $this->session->userdata('role') == 'guru') {
-            show_error('You do not have permission to access this page.', 403);
-        }
-        $this->load->model(array('rapormid_model', 'kelas_model', 'user_model'));
+        $this->load->model('Kelas_model');
+        $this->load->model('Siswa_model');
+        $this->load->library('session');
     }
 
     public function index()
     {
-        $data['kelas'] = $this->kelas_model->get_all();
-        $data['users'] = $this->user_model->get_all();
+        // Check if user is logged in
+        if (!$this->session->userdata('logged_in')) {
+            redirect('auth'); // Redirect to login page if not logged in
+        }
+
+        $user_id = $this->session->userdata('id');
+        $user_role = $this->session->userdata('role');
+
+        if ($user_role == 'admin') {
+            // If admin, get all classes
+            $kelas = $this->Kelas_model->get_all_kelas();
+        } else {
+            // If not admin, get classes by wali_kelas id
+            $kelas = $this->Kelas_model->get_kelas_by_wali_kelas($user_id);
+        }
+
+        $students = $this->Siswa_model->get_all_siswa();
+
+        $data['kelas'] = $kelas;
+        $data['students'] = $students;
 
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
@@ -30,30 +44,27 @@ class Rapormid extends CI_Controller
     public function get_wali_kelas()
     {
         $class_id = $this->input->get('class_id');
-        $kelas = $this->kelas_model->get_by_id($class_id);
-        echo json_encode(['nama_wali_kelas' => $kelas->nama_wali_kelas]);
+        $wali_kelas = $this->Kelas_model->get_wali_kelas_by_kelas_id($class_id);
+
+        echo json_encode($wali_kelas);
     }
 
     public function get_student_data()
     {
         $student_id = $this->input->post('student_id');
-        $student = $this->db->get_where('students', ['id' => $student_id])->row();
+        $student_data = $this->Siswa_model->get_siswa_by_id($student_id);
 
-        if ($student) {
-            $response = [
-                'success' => true,
-                'data' => [
-                    'name' => $student->name,
-                    'nis' => $student->nis
-                ]
-            ];
+        if ($student_data) {
+            echo json_encode(['success' => true, 'data' => $student_data]);
         } else {
-            $response = [
-                'success' => false,
-                'message' => 'Student not found'
-            ];
+            echo json_encode(['success' => false, 'message' => 'Student not found']);
         }
+    }
 
-        echo json_encode($response);
+    public function get_students_by_class()
+    {
+        $class_id = $this->input->post('class_id');
+        $students = $this->Siswa_model->get_siswa_by_kelas($class_id);
+        echo json_encode($students);
     }
 }

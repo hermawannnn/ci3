@@ -5,6 +5,7 @@ class Pembelajaran_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        $this->load->database();
     }
 
     public function get_all()
@@ -71,5 +72,37 @@ class Pembelajaran_model extends CI_Model
         $this->db->where('a.user_id', $this->session->userdata('id'));
         $this->db->group_by('b.id');
         return $this->db->get()->result();
+    }
+
+    public function get_pembelajaran_by_user($user_id)
+    {
+        $this->db->select('pembelajaran.*, kelas.nama_kelas, pelajaran.nama_pelajaran');
+        $this->db->from('pembelajaran');
+        $this->db->join('kelas', 'kelas.id = pembelajaran.kelas_id', 'inner');
+        $this->db->join('pelajaran', 'pelajaran.id = pembelajaran.pelajaran_id', 'inner');
+        $this->db->where('pembelajaran.user_id', $user_id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_pembelajaran_by_user_id($user_id)
+    {
+        $this->db->select('kelas.id as kelas_id, kelas.nama_kelas, pelajaran.nama_pelajaran');
+        $this->db->from('pembelajaran');
+        $this->db->join('kelas', 'pembelajaran.kelas_id = kelas.id');
+        $this->db->join('pelajaran', 'pembelajaran.pelajaran_id = pelajaran.id');
+        $this->db->where('pembelajaran.user_id', $user_id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_all_pembelajaran()
+    {
+        $this->db->select('kelas.id as kelas_id, kelas.nama_kelas, pelajaran.nama_pelajaran');
+        $this->db->from('pembelajaran');
+        $this->db->join('kelas', 'pembelajaran.kelas_id = kelas.id');
+        $this->db->join('pelajaran', 'pembelajaran.pelajaran_id = pelajaran.id');
+        $query = $this->db->get();
+        return $query->result();
     }
 }

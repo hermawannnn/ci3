@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -52,3 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['raport'] = 'RaportController/index';
+$route['raport/get_siswa_by_kelas'] = 'RaportController/get_siswa_by_kelas';
+$route['raport/save_nilai'] = 'RaportController/save_nilai';
+$route['raport/get_existing_nilai'] = 'RaportController/get_existing_nilai';

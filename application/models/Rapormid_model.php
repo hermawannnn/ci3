@@ -20,4 +20,11 @@ class Rapormid_model extends CI_Model
         $this->db->join('pelajaran d', 'a.pelajaran_id = d.id', 'left');
         return $this->db->get()->result();
     }
+
+    public function get_siswa_by_kelas($kelas_id)
+    {
+        $this->db->where('kelas_id', $kelas_id);
+        $query = $this->db->get('siswa');
+        return $query->result();
+    }
 }

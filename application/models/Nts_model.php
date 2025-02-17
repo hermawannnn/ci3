@@ -33,11 +33,4 @@ class Nts_model extends CI_Model
         $this->db->where('a.user_id', $this->session->userdata('id'));
         return $this->db->get()->result();
     }
-
-    public function get_mata_pelajaran_by_kelas($kelas_id)
-    {
-        $this->db->where('kelas_id', $kelas_id);
-        $query = $this->db->get('mata_pelajaran'); // Assuming your table name is 'mata_pelajaran'
-        return $query->result();
-    }
 }

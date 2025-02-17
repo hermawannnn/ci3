@@ -5,6 +5,7 @@ class Kelas_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        $this->load->database();
     }
 
     public function get_all()
@@ -42,5 +43,39 @@ class Kelas_model extends CI_Model
         // Menghapus data kelas berdasarkan id
         $this->db->where('id', $id);
         return $this->db->delete('kelas');
+    }
+
+    public function get_kelas_by_wali_kelas($wali_kelas_id)
+    {
+        $this->db->select('kelas.*, users.nama as nama_wali_kelas');
+        $this->db->from('kelas');
+        $this->db->join('users', 'kelas.wali_kelas = users.id', 'left');
+        $this->db->where('kelas.wali_kelas', $wali_kelas_id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_all_kelas()
+    {
+        $this->db->select('kelas.*, users.nama as nama_wali_kelas');
+        $this->db->from('kelas');
+        $this->db->join('users', 'kelas.wali_kelas = users.id', 'left');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_wali_kelas_by_kelas_id($kelas_id)
+    {
+        $this->db->select('users.nama as nama_wali_kelas');
+        $this->db->from('kelas');
+        $this->db->join('users', 'kelas.wali_kelas = users.id', 'left');
+        $this->db->where('kelas.id', $kelas_id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        } else {
+            return null;
+        }
     }
 }
