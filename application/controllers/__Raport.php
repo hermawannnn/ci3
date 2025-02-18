@@ -42,40 +42,7 @@ class Raport extends CI_Controller
         echo json_encode($siswa);
     }
 
-    public function save_nilai()
-    {
-        $kelas_id = $this->input->post('kelas');
-        $nilai_pt = $this->input->post('nilai_pt');
-        $nilai_mt = $this->input->post('nilai_mt');
 
-        foreach ($nilai_pt as $siswa_id => $pt) {
-            $mt = $nilai_mt[$siswa_id];
-
-            // Check if the record already exists
-            $existing_nilai = $this->Rapormidsemester_model->get_nilai_by_kelas_siswa($kelas_id, $siswa_id);
-
-            if ($existing_nilai) {
-                // Update existing record
-                $data = array(
-                    'nilai_pt' => $pt,
-                    'nilai_mt' => $mt
-                );
-                $this->Rapormidsemester_model->update_nilai($kelas_id, $siswa_id, $data);
-            } else {
-                // Insert new record
-                $data = array(
-                    'kelas_id' => $kelas_id,
-                    'siswa_id' => $siswa_id,
-                    'pelajaran_id' => 1, // Assuming pelajaran_id is 1, you might need to adjust this
-                    'nilai_pt' => $pt,
-                    'nilai_mt' => $mt
-                );
-                $this->Rapormidsemester_model->insert_nilai($data);
-            }
-        }
-
-        redirect('raport');
-    }
 
     public function get_existing_nilai()
     {

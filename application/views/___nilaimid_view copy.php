@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Input PT & MT</h1>
+                    <h1>Input/Edit PT & MT</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Input PT & MT</li>
+                        <li class="breadcrumb-item active">Input/Edit PT & MT</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Input PT & MT</h3>
+                            <h3 class="card-title">Input/Edit PT & MT</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -38,9 +38,11 @@
                                                     <option value="">Belum ada data mengajar</option>
                                                 <?php else: ?>
                                                     <option>Pilih Kelas dan Mata Pelajaran</option>
+                                                    <?php usort($pembelajaran, function ($a, $b) {
+                                                        return strcmp($a->nama_kelas, $b->nama_kelas);
+                                                    }); ?>
                                                     <?php foreach ($pembelajaran as $p): ?>
-
-                                                        <option value="<?= $p->kelas_id ?>"><?= $p->nama_kelas ?> - <?= $p->nama_pelajaran ?></option>
+                                                        <option value="<?= $p->kelas_id ?>-<?= $p->pelajaran_id ?>"><?= $p->nama_kelas ?> - <?= $p->nama_pelajaran ?></option>
                                                     <?php endforeach; ?>
                                                 <?php endif; ?>
                                             </select>
@@ -59,6 +61,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <!-- Data siswa akan ditampilkan di sini -->
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -85,57 +88,58 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#kelas').change(function() {
-            var kelasId = $(this).val();
-            $.ajax({
-                url: '<?= base_url('raport/get_siswa_by_kelas') ?>',
-                type: 'post',
-                data: {
-                    kelas_id: kelasId
-                },
-                dataType: 'json',
-                success: function(response) {
-                    var tableBody = $('#siswaTable tbody');
-                    tableBody.empty(); // Clear existing data
+        // Function to load existing data
+        function loadExistingData() {
+            var selectedValue = $('#kelas').val();
+            if (selectedValue) {
+                var [kelasId, pelajaranId] = selectedValue.split('-');
+                $.ajax({
+                    url: '<?= base_url('raport/get_siswa_by_kelas') ?>',
+                    type: 'post',
+                    data: {
+                        kelas_id: kelasId,
+                        pelajaran_id: pelajaranId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        var tableBody = $('#siswaTable tbody');
+                        tableBody.empty();
 
-                    if (response.length > 0) {
-                        var rowNumber = 1; // Initialize row number
-                        $.each(response, function(i, siswa) {
-                            // Fetch existing nilai PT and MT from the database
-                            $.ajax({
-                                url: '<?= base_url('raport/get_existing_nilai') ?>',
-                                type: 'post',
-                                data: {
-                                    kelas_id: kelasId,
-                                    siswa_id: siswa.id
-                                },
-                                dataType: 'json',
-                                success: function(nilaiResponse) {
-                                    var nilai_pt = nilaiResponse ? nilaiResponse.nilai_pt : '';
-                                    var nilai_mt = nilaiResponse ? nilaiResponse.nilai_mt : '';
-
-                                    var row = '<tr>' +
-                                        '<td>' + rowNumber + '</td>' +
-                                        '<td>' + siswa.nama + '</td>' +
-                                        '<td><input type="number" class="form-control nilai-pt" name="nilai_pt[' + siswa.id + ']" value="' + nilai_pt + '" min="0" max="100"></td>' +
-                                        '<td><input type="number" class="form-control nilai-mt" name="nilai_mt[' + siswa.id + ']" value="' + nilai_mt + '" min="0" max="100"></td>' +
-                                        '</tr>';
-                                    tableBody.append(row);
-                                    rowNumber++; // Increment row number
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error(xhr);
-                                }
+                        if (response.length > 0) {
+                            response.sort(function(a, b) {
+                                return a.nama.localeCompare(b.nama);
                             });
-                        });
-                    } else {
-                        tableBody.append('<tr><td colspan="4">Tidak ada siswa di kelas ini</td></tr>');
+
+                            var rowNumber = 1;
+                            $.each(response, function(i, siswa) {
+                                var nilaiPt = (siswa.nilai_pt === null || siswa.nilai_pt === undefined) ? '' : siswa.nilai_pt;
+                                var nilaiMt = (siswa.nilai_mt === null || siswa.nilai_mt === undefined) ? '' : siswa.nilai_mt;
+
+                                var row = '<tr>' +
+                                    '<td>' + rowNumber + '</td>' +
+                                    '<td>' + siswa.nama + '</td>' +
+                                    '<td><input type="number" class="form-control nilai-pt" name="nilai_pt[' + siswa.id + ']" value="' + nilaiPt + '" min="0" max="100"></td>' +
+                                    '<td><input type="number" class="form-control nilai-mt" name="nilai_mt[' + siswa.id + ']" value="' + nilaiMt + '" min="0" max="100"></td>' +
+                                    '</tr>';
+                                tableBody.append(row);
+                                rowNumber++;
+                            });
+                        } else {
+                            tableBody.append('<tr><td colspan="4">Tidak ada siswa di kelas ini</td></tr>');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr);
                     }
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr);
-                }
-            });
+                });
+            }
+        }
+
+        // Load existing data on page load
+        loadExistingData();
+
+        $('#kelas').change(function() {
+            loadExistingData();
         });
 
         // Validate input on form submit
@@ -144,10 +148,11 @@
                 var value = $(this).val();
                 if (value < 0 || value > 100) {
                     alert('Nilai harus berada di antara 0 dan 100.');
-                    event.preventDefault(); // Prevent form submission
-                    return false; // Stop the loop
+                    event.preventDefault();
+                    return false;
                 }
             });
         });
     });
+</script>
 </script>

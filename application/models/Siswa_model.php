@@ -52,7 +52,7 @@ class Siswa_model extends CI_Model
     {
         $this->db->where('kelas_id', $kelas_id);
         $query = $this->db->get('siswa');
-        return $query->result();
+        return $query->result_array();
     }
 
     public function get_all_siswa()

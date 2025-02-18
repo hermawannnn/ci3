@@ -55,11 +55,8 @@ class Kelas_model extends CI_Model
 
     public function get_all_kelas()
     {
-        $this->db->select('kelas.*, users.nama as nama_wali_kelas');
-        $this->db->from('kelas');
-        $this->db->join('users', 'kelas.wali_kelas = users.id', 'left');
-        $query = $this->db->get();
-        return $query->result();
+        $query = $this->db->get('kelas');
+        return $query->result_array();
     }
 
     public function get_wali_kelas_by_kelas_id($kelas_id)

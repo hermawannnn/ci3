@@ -49,4 +49,10 @@ class Pelajaran_model extends CI_Model
         $this->db->from('siswa');
         return $this->db->count_all_results();
     }
+
+    public function get_all_pelajaran()
+    {
+        $query = $this->db->get('pelajaran');
+        return $query->result_array();
+    }
 }

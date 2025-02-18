@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class RaportController extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -29,40 +28,6 @@ class RaportController extends CI_Controller
         echo json_encode($siswa);
     }
 
-    public function save_nilai()
-    {
-        $kelas_id = $this->input->post('kelas');
-        $nilai_pt = $this->input->post('nilai_pt');
-        $nilai_mt = $this->input->post('nilai_mt');
-
-        foreach ($nilai_pt as $siswa_id => $pt) {
-            $mt = $nilai_mt[$siswa_id];
-
-            // Prepare data for insertion or update
-            $data = array(
-                'kelas_id' => $kelas_id,
-                'siswa_id' => $siswa_id,
-                'pelajaran_id' => 8, // Assuming pelajaran_id is fixed for now
-                'nilai_pt' => $pt,
-                'nilai_mt' => $mt
-            );
-
-            // Check if the record already exists
-            $existing_record = $this->Rapormidsemester_model->get_nilai($kelas_id, $siswa_id, 8);
-
-            if ($existing_record) {
-                // Update the existing record
-                $this->Rapormidsemester_model->update_nilai($existing_record->id, $data);
-            } else {
-                // Insert a new record
-                $this->Rapormidsemester_model->insert_nilai($data);
-            }
-        }
-
-        // Redirect or show a success message
-        redirect('raport');
-    }
-
     public function get_existing_nilai()
     {
         $kelas_id = $this->input->post('kelas_id');
@@ -71,5 +36,42 @@ class RaportController extends CI_Controller
 
         $nilai = $this->Rapormidsemester_model->get_nilai($kelas_id, $siswa_id, $pelajaran_id);
         echo json_encode($nilai);
+    }
+
+    public function save_nilai()
+    {
+        $kelas_id = $this->input->post('kelas');
+        $nilai_pt = $this->input->post('nilai_pt');
+        $nilai_mt = $this->input->post('nilai_mt');
+
+        list($kelas_id, $pelajaran_id) = explode('-', $kelas_id); // Split the selected value to get class and subject IDs
+
+        foreach ($nilai_pt as $siswa_id => $pt) {
+            $mt = $nilai_mt[$siswa_id];
+
+            // Check if the record already exists
+            $existing_nilai = $this->Rapormidsemester_model->get_nilai_by_kelas_siswa($kelas_id, $siswa_id);
+
+            if ($existing_nilai) {
+                // Update existing record
+                $data = array(
+                    'nilai_pt' => $pt,
+                    'nilai_mt' => $mt
+                );
+                $this->Rapormidsemester_model->update_nilai($existing_nilai->id, $data);
+            } else {
+                // Insert new record
+                $data = array(
+                    'kelas_id' => $kelas_id,
+                    'siswa_id' => $siswa_id,
+                    'pelajaran_id' => $pelajaran_id, // Use the correct pelajaran_id
+                    'nilai_pt' => $pt,
+                    'nilai_mt' => $mt
+                );
+                $this->Rapormidsemester_model->insert_nilai($data);
+            }
+        }
+
+        redirect('raport');
     }
 }

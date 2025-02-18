@@ -326,6 +326,23 @@
                         alert('Error loading teacher name.');
                     }
                 });
+
+                $.ajax({
+                    url: '<?php echo base_url('rapormid/get_subject_score'); ?>',
+                    type: 'POST',
+                    data: {
+                        pelajaran_id: 8,
+                        siswa_id: siswa_id
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#math-score').text(data.score);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", status, error);
+                        alert('Error loading subject score.');
+                    }
+                });
             }
         });
     });

@@ -56,7 +56,7 @@
           <li class="nav-item">
             <a href="<?php echo site_url('pembelajaran'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'pembelajaran') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book-open"></i>
-              <p>Pembelajaran</p>
+              <p>Data Mengajar</p>
             </a>
           </li>
         <?php endif; ?>
@@ -74,13 +74,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('raport'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'raport') ? 'active' : ''; ?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon far fa-circle"></i>
                   <p>Input NTS</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('rapormid'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon far fa-circle"></i>
                   <p>Rapor Mid Semester</p>
                 </a>
               </li>

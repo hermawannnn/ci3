@@ -7,83 +7,55 @@ class Rapormid extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Kelas_model');
-        $this->load->model('Siswa_model'); // Load the Siswa_model
-        $this->load->library('session');
+        // Memuat model, library, dll yang diperlukan
+        $this->load->model('Rapormid_model');
     }
 
     public function index()
     {
-        // Check if user is logged in
-        if (!$this->session->userdata('logged_in')) {
-            redirect('auth'); // Redirect to login page if not logged in
+        // Metode default
+        $data['rapormid'] = $this->Rapormid_model->get_all();
+        $this->load->view('rapormid/index', $data);
+    }
+
+    public function view($id)
+    {
+        // Melihat catatan tertentu
+        $data['rapormid'] = $this->Rapormid_model->get($id);
+        if (empty($data['rapormid'])) {
+            show_404();
         }
+        $this->load->view('rapormid/view', $data);
+    }
 
-        $user_id = $this->session->userdata('id');
-        $user_role = $this->session->userdata('role');
-
-        if ($user_role == 'admin') {
-            // If admin, get all classes
-            $kelas = $this->Kelas_model->get_all_kelas();
-        } else {
-            // If not admin, get classes by wali_kelas id
-            $kelas = $this->Kelas_model->get_kelas_by_wali_kelas($user_id);
+    public function create()
+    {
+        // Membuat catatan baru
+        if ($this->input->post()) {
+            $this->Rapormid_model->insert($this->input->post());
+            redirect('rapormid');
         }
-
-        $students = $this->Siswa_model->get_all_siswa();
-
-        $data['kelas'] = $kelas;
-        $data['students'] = $students;
-
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar');
-        $this->load->view('rapormid_view', $data);
-        $this->load->view('template/footer');
+        $this->load->view('rapormid/create');
     }
 
-    public function get_wali_kelas()
+    public function edit($id)
     {
-        $class_id = $this->input->get('class_id');
-        $wali_kelas = $this->Kelas_model->get_wali_kelas_by_kelas_id($class_id);
-
-        echo json_encode($wali_kelas);
-    }
-
-    public function get_student_data()
-    {
-        $student_id = $this->input->post('student_id');
-        $student_data = $this->Siswa_model->get_by_id($student_id);
-
-        if ($student_data) {
-            $kelas_id = $student_data->kelas_id;
-            $kelas = $this->Kelas_model->get_by_id($kelas_id); // Assuming you have a get_by_id method in Kelas_model
-            $student_data->nama_kelas = $kelas->nama_kelas; // Add class name to student data
-            echo json_encode(['success' => true, 'data' => $student_data]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Student not found']);
+        // Mengedit catatan yang ada
+        if ($this->input->post()) {
+            $this->Rapormid_model->update($id, $this->input->post());
+            redirect('rapormid');
         }
+        $data['rapormid'] = $this->Rapormid_model->get($id);
+        if (empty($data['rapormid'])) {
+            show_404();
+        }
+        $this->load->view('rapormid/edit', $data);
     }
 
-    public function get_students_by_class()
+    public function delete($id)
     {
-        $class_id = $this->input->post('class_id');
-        $students = $this->Siswa_model->get_siswa_by_kelas($class_id);
-        echo json_encode($students);
-    }
-
-    public function get_average_score()
-    {
-        $student_id = $this->input->post('student_id');
-        $kelas_id = $this->input->post('kelas_id');
-        $average_score = $this->Rapormid_model->get_average_score($student_id, $kelas_id);
-        echo json_encode($average_score);
-    }
-
-    public function get_teacher_name()
-    {
-        $kelas_id = $this->input->post('kelas_id');
-        $wali_kelas = $this->Kelas_model->get_wali_kelas_by_kelas_id($kelas_id);
-
-        echo json_encode($wali_kelas);
+        // Menghapus catatan
+        $this->Rapormid_model->delete($id);
+        redirect('rapormid');
     }
 }

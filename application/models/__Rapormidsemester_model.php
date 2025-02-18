@@ -17,6 +17,14 @@ class Rapormidsemester_model extends CI_Model
         return $query->row();
     }
 
+    public function get_nilai_by_kelas_siswa($kelas_id, $siswa_id)
+    {
+        $this->db->where('kelas_id', $kelas_id);
+        $this->db->where('siswa_id', $siswa_id);
+        $query = $this->db->get('rapormidsemester');
+        return $query->row();
+    }
+
     public function insert_nilai($data)
     {
         return $this->db->insert('rapormidsemester', $data);
