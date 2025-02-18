@@ -37,15 +37,13 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <form action="<?php echo site_url('nilai/create'); ?>" method="post" id="nilai_form">
+                            <form action="" method="post" id="">
                                 <input type="hidden" name="kelas_id" id="kelas_id_hidden">
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Siswa</th>
-                                            <th>Nilai PT</th>
-                                            <th>Nilai MT</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -56,8 +54,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Siswa</th>
-                                            <th>Nilai PT</th>
-                                            <th>Nilai MT</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -94,17 +90,11 @@
                         row.innerHTML = `
                                 <td>${index + 1}</td>
                                 <td>${siswa.nama}</td>
-                                <td><label>${siswa.nilai_pt || 0}</label></td>
-                                <td><label>${siswa.nilai_mt || 0}</label></td>
                                 <td><button class="btn btn-secondary" onclick="printRapor(${siswa.id})">Print</button></td>
                             `;
                         tableBody.appendChild(row);
                     });
                 });
-        } else {
-            document.getElementById('nilai_form').style.display = 'none';
-            // Clear the table if no class is selected
-            document.getElementById('nilai_table_body').innerHTML = '';
         }
     });
 
