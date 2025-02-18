@@ -63,7 +63,7 @@
 
         <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('role') == 'guru'): ?>
           <!-- Teacher Links -->
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'raport' || $this->uri->segment(1) == 'rapormid') ? 'menu-open' : ''; ?>">
+          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid') ? 'menu-open' : ''; ?>">
             <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'raport' || $this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -73,7 +73,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('raport'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'raport') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('nilai'); ?>" class="nav-link <?php echo ($this->uri->segment(1) == 'nilai') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Input NTS</p>
                 </a>

@@ -13,11 +13,29 @@ class Nilai extends CI_Controller
 
     public function index()
     {
-        $this->load->model('Kelas_model');
-        $this->load->model('Pelajaran_model');
+        $this->load->model('Pembelajaran_model');
+        $user_role = $this->session->userdata('role');
+        $user_id = $this->session->userdata('id'); // Make sure to use the correct session key
+
+        if ($user_role == 'guru') {
+            // Get teaching assignments for the logged-in teacher
+            $pembelajaran = $this->Pembelajaran_model->get_by_id_mengajar();
+
+            // Extract unique classes and subjects from pembelajaran
+            $kelas_ids = array_unique(array_column($pembelajaran, 'kelas_id'));
+            $pelajaran_ids = array_unique(array_column($pembelajaran, 'pelajaran_id'));
+
+            $data['kelas'] = $this->Pembelajaran_model->get_kelas_by_ids($kelas_ids);
+            $data['pelajaran'] = $this->Pembelajaran_model->get_pelajaran_by_ids($pelajaran_ids);
+        } else {
+            // For non-guru users, show all classes and subjects
+            $this->load->model('Kelas_model');
+            $this->load->model('Pelajaran_model');
+            $data['kelas'] = $this->Kelas_model->get_all_kelas();
+            $data['pelajaran'] = $this->Pelajaran_model->get_all_pelajaran();
+        }
+
         $data['nilai'] = $this->Nilai_model->get_all_nilai();
-        $data['kelas'] = $this->Kelas_model->get_all_kelas();
-        $data['pelajaran'] = $this->Pelajaran_model->get_all_pelajaran();
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
         $this->load->view('nilaimid_view', $data);
