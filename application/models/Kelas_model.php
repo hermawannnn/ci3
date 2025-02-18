@@ -24,11 +24,9 @@ class Kelas_model extends CI_Model
 
     public function get_by_id($id)
     {
-        $this->db->select('kelas.*, users.nama as nama_wali_kelas');
-        $this->db->from('kelas');
-        $this->db->join('users', 'users.id = kelas.wali_kelas', 'left');
-        $this->db->where('kelas.id', $id);
-        return $this->db->get()->row();
+        $this->db->where('id', $id);
+        $query = $this->db->get('kelas');
+        return $query->row();
     }
 
     public function update($id, $data)

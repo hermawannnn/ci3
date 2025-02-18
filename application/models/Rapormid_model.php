@@ -27,4 +27,21 @@ class Rapormid_model extends CI_Model
         $query = $this->db->get('siswa');
         return $query->result();
     }
+
+    public function get_average_score($student_id, $kelas_id)
+    {
+        $this->db->select_avg('(nilai_pt + nilai_mt) / 2', 'average_score');
+        $this->db->where('siswa_id', $student_id);
+        $this->db->where('kelas_id', $kelas_id);
+        $query = $this->db->get('rapormidsemester');
+        return $query->row();
+    }
+
+    public function get_teacher_name($teacher_id)
+    {
+        $this->db->select('nama_guru');
+        $this->db->where('id', $teacher_id);
+        $query = $this->db->get('guru');
+        return $query->row();
+    }
 }

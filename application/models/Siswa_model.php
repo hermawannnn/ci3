@@ -74,4 +74,13 @@ class Siswa_model extends CI_Model
             return null;
         }
     }
+
+    public function get_siswa()
+    {
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }

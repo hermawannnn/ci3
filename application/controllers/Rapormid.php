@@ -8,7 +8,7 @@ class Rapormid extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Kelas_model');
-        $this->load->model('Siswa_model');
+        $this->load->model('Siswa_model'); // Load the Siswa_model
         $this->load->library('session');
     }
 
@@ -52,9 +52,12 @@ class Rapormid extends CI_Controller
     public function get_student_data()
     {
         $student_id = $this->input->post('student_id');
-        $student_data = $this->Siswa_model->get_siswa_by_id($student_id);
+        $student_data = $this->Siswa_model->get_by_id($student_id);
 
         if ($student_data) {
+            $kelas_id = $student_data->kelas_id;
+            $kelas = $this->Kelas_model->get_by_id($kelas_id); // Assuming you have a get_by_id method in Kelas_model
+            $student_data->nama_kelas = $kelas->nama_kelas; // Add class name to student data
             echo json_encode(['success' => true, 'data' => $student_data]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Student not found']);
@@ -66,5 +69,21 @@ class Rapormid extends CI_Controller
         $class_id = $this->input->post('class_id');
         $students = $this->Siswa_model->get_siswa_by_kelas($class_id);
         echo json_encode($students);
+    }
+
+    public function get_average_score()
+    {
+        $student_id = $this->input->post('student_id');
+        $kelas_id = $this->input->post('kelas_id');
+        $average_score = $this->Rapormid_model->get_average_score($student_id, $kelas_id);
+        echo json_encode($average_score);
+    }
+
+    public function get_teacher_name()
+    {
+        $kelas_id = $this->input->post('kelas_id');
+        $wali_kelas = $this->Kelas_model->get_wali_kelas_by_kelas_id($kelas_id);
+
+        echo json_encode($wali_kelas);
     }
 }
