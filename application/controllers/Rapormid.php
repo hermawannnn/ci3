@@ -8,54 +8,24 @@ class Rapormid extends CI_Controller
     {
         parent::__construct();
         // Memuat model, library, dll yang diperlukan
-        $this->load->model('Rapormid_model');
+        // $this->load->model('Rapormid_model');
+        $this->load->model('Siswa_model');
+        $this->load->model('Nilai_model');
+        $this->load->model('Kelas_model');
     }
 
     public function index()
     {
         // Metode default
-        $data['rapormid'] = $this->Rapormid_model->get_all();
-        $this->load->view('rapormid/index', $data);
-    }
+        // $data['rapormid'] = $this->Rapormid_model->get_all();
+        $data['siswa'] = $this->Siswa_model->get_all();
+        $data['nilai'] = $this->Nilai_model->get_all_nilai();
+        $data['kelas'] = $this->Kelas_model->get_all_kelas();
 
-    public function view($id)
-    {
-        // Melihat catatan tertentu
-        $data['rapormid'] = $this->Rapormid_model->get($id);
-        if (empty($data['rapormid'])) {
-            show_404();
-        }
-        $this->load->view('rapormid/view', $data);
-    }
 
-    public function create()
-    {
-        // Membuat catatan baru
-        if ($this->input->post()) {
-            $this->Rapormid_model->insert($this->input->post());
-            redirect('rapormid');
-        }
-        $this->load->view('rapormid/create');
-    }
-
-    public function edit($id)
-    {
-        // Mengedit catatan yang ada
-        if ($this->input->post()) {
-            $this->Rapormid_model->update($id, $this->input->post());
-            redirect('rapormid');
-        }
-        $data['rapormid'] = $this->Rapormid_model->get($id);
-        if (empty($data['rapormid'])) {
-            show_404();
-        }
-        $this->load->view('rapormid/edit', $data);
-    }
-
-    public function delete($id)
-    {
-        // Menghapus catatan
-        $this->Rapormid_model->delete($id);
-        redirect('rapormid');
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar');
+        $this->load->view('rapormid_view', $data);
+        $this->load->view('template/footer');
     }
 }
