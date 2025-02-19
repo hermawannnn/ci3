@@ -65,22 +65,35 @@ class Rapormid extends CI_Controller
         // Get student data
         $siswa = $this->Siswa_model->get_by_id($siswa_id);
         $nilai_mid = $this->rapormid_model->ambilnilai($siswa_id);
-        $ratakelas = $this->rapormid_model->ratakelas($siswa['kelas_id'], $pelajaran_id);
         $pelajaran = $this->Pelajaran_model->get_all();
+        $kelas_id = $siswa['kelas_id']; // Access kelas_id from $siswa array
+
+        // Get class average for each subject
+        $ratakelas_math = $this->rapormid_model->ratakelas($kelas_id, 3); // pelajaran_id 3 = Math
+        $ratakelas_english = $this->rapormid_model->ratakelas($kelas_id, 4); // pelajaran_id 4 = English
+        $ratakelas_science = $this->rapormid_model->ratakelas($kelas_id, 5); // pelajaran_id 5 = Science
+        $ratakelas_ict = $this->rapormid_model->ratakelas($kelas_id, 6); // pelajaran_id 6 = ICT
+        $ratakelas_tahfidz = $this->rapormid_model->ratakelas($kelas_id, 10); // pelajaran_id 10 = Tahfidz
+        $ratakelas_arabic = $this->rapormid_model->ratakelas($kelas_id, 8); // pelajaran_id 8 = Arabic
 
         $data['siswa'] = $siswa;
         $data['nilai_mid'] = $nilai_mid;
         $data['pelajaran'] = $pelajaran;
-        $data['ratakelas'] = $ratakelas;
+        $data['kelas_id'] = $kelas_id; // Pass kelas_id to the view
+        $data['ratakelas_math'] = $ratakelas_math;
+        $data['ratakelas_english'] = $ratakelas_english;
+        $data['ratakelas_science'] = $ratakelas_science;
+        $data['ratakelas_ict'] = $ratakelas_ict;
+        $data['ratakelas_tahfidz'] = $ratakelas_tahfidz;
+        $data['ratakelas_arabic'] = $ratakelas_arabic;
 
-        echo '<pre>';
-        // // print_r($data['siswa']);
+        // echo '<pre>';
         // print_r($data['nilai_mid']);
         // print_r($data['pelajaran']);
-        print_r($data['ratakelas']);
-        echo '</pre>';
+        // print_r($data['kelas_id']);
+        // echo '</pre>';
 
-        // $this->load->view('print_rapormid_view', $data);
+        $this->load->view('print_rapormid_view', $data);
     }
 
     public function submit_form()

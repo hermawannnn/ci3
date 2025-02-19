@@ -5,233 +5,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progress Report</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>aset/print_rapormid.css"> -->
+
     <style>
         @font-face {
             font-family: dauphin;
             src: url(<?php echo base_url() ?>aset/dist/font/dauphin.ttf)
         }
 
-        .bp {
-            font-family: 'dauphin';
-            font-size: 40px;
-            font-weight: bold;
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
         }
 
-        .table th,
-        .table td {
+        .bp {
+            font-family: 'dauphin';
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px;
             text-align: center;
         }
 
-        .isitabel {
-            font-size: 18px;
+        th {
+            background-color: #f2f2f2;
         }
 
-        @media print {
-            body {
-                margin: 1mm;
-                /* Mengurangi margin saat print */
-            }
+        .table-bordered {
+            border: 1px solid #000;
+        }
 
-            .table thead th {
-                background-color: rgb(104, 104, 104) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                color: white !important;
-            }
+        .mt-3 {
+            margin-top: 1.5em;
+        }
 
-            .table-secondary {
-                background-color: rgb(0, 0, 0) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+        .mt-5 {
+            margin-top: 3em;
+        }
 
-            .tdp {
-                background-color: rgb(104, 104, 104) !important;
-                print-color-adjust: exact;
-            }
+        .table-secondary {
+            background-color: #e2e3e5;
+        }
+
+        .text-center {
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="col-12 text-center">
-        <br>
-        <img src="<?php echo base_url() ?>aset/dist/img/logo-ais.png" width="150px" alt="Logo Ananda Islamic School">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="<?php echo base_url() ?>aset/dist/img/logo-ais.png" width="100px" alt="Logo Ananda Islamic School">
         <br>
         <span class="bp">SDS Ananda Islamic School</span>
         <br>
-        PROGRESS REPORT & MID TEST RESULT
-        <br>
-        2024/2025
+        <p style="font-size: 10px; margin-top: 5px;">PROGRESS REPORT & MID TEST RESULT<br>2024/2025</p>
     </div>
-    <br>
 
-    <table style="width: 100%;">
+    <table style="width: 100%; margin-bottom: 20px; border: none;">
         <tr>
-            <td class="isitabel" style="text-align: left;">
-                <p><strong>Student Name:</strong> <?php echo isset($siswa['nama']) ? $siswa['nama'] : 'Data Kosong'; ?></p>
-                <p><strong>NIS / NISN:</strong> <?php echo isset($siswa['nis']) ? $siswa['nis'] : 'Data Kosong'; ?></p>
+            <td style="width: 70%; text-align: left; padding: 8px; border: none; font-size: 14px;">
+                <p style="margin: 5px 0;"><strong>Student Name:</strong> <?php echo isset($siswa['nama']) ? $siswa['nama'] : 'Data Kosong'; ?></p>
+                <p style="margin: 5px 0;"><strong>NIS / NISN:</strong> <?php echo isset($siswa['nis']) ? $siswa['nis'] : 'Data Kosong'; ?> / <?php echo isset($siswa['nisn']) ? $siswa['nisn'] : 'Data Kosong'; ?></p>
             </td>
-            <td class="isitabel" style="text-align: left;">
-                <p><strong>Class:</strong> Primary <?php echo isset($siswa['nama_kelas']) ? $siswa['nama_kelas'] : 'Data Kosong'; ?></p>
-                <p><strong>Semester:</strong> Semester 1</p>
+            <td style="width: 30%; text-align: left; padding: 8px; border: none; font-size: 14px;">
+                <p style="margin: 5px 0;"><strong>Class:</strong> Primary <?php echo isset($siswa['nama_kelas']) ? $siswa['nama_kelas'] : 'Data Kosong'; ?></p>
+                <p style="margin: 5px 0;"><strong>Semester:</strong> Semester 1</p>
             </td>
         </tr>
     </table>
-    <table class="table table-bordered mt-3">
+
+    <table class="table table-bordered" style="margin-top: 20px;">
         <thead>
             <tr>
-                <th style="width: 30px; text-align: center; vertical-align: middle;">No</th>
-                <th style="text-align: center; vertical-align: middle;">Subject</th>
-                <th style="width: 150px; text-align: center; vertical-align: middle;">Score</th>
-                <th style="width: 150px; text-align: center; vertical-align: middle;">Class Average</th>
+                <th style="width: 30px;">No</th>
+                <th>Subject</th>
+                <th style="width: 100px;">Score</th>
+                <th style="width: 100px;">Class Average</th>
             </tr>
         </thead>
         <tbody>
             <tr class="table-secondary">
-                <td class="tdp" colspan="4"><strong>International Studies</strong></td>
+                <td colspan="4" style="font-weight: bold;">International Studies</td>
             </tr>
             <tr>
                 <td>1</td>
-                <!-- Math -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[0]['nama_pelajaran']) ? $pelajaran[0]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     foreach ($nilai_mid as $nilai) {
                         if ($nilai['pelajaran_id'] == 3) {
                             echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
-                            break; // Stop looping once you find the match
+                            break;
                         }
                     }
                     ?></td>
-                <td>80</td>
+                <td><?php echo isset($ratakelas_math['nilai_pt']) ? number_format($ratakelas_math['nilai_pt'], 2) : 'N/A'; ?></td>
             </tr>
             <tr>
                 <td>2</td>
-                <!-- English -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[1]['nama_pelajaran']) ? $pelajaran[1]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     foreach ($nilai_mid as $nilai) {
                         if ($nilai['pelajaran_id'] == 4) {
                             echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
-                            break; // Stop looping once you find the match
+                            break;
                         }
                     }
                     ?></td>
-                <td>80</td>
+                <td><?php echo isset($ratakelas_english['nilai_pt']) ? number_format($ratakelas_english['nilai_pt'], 2) : 'N/A'; ?></td>
             </tr>
             <tr>
                 <td>3</td>
-                <!-- Science -->
-                <td style="text-align: left;"> <?php echo isset($pelajaran[2]['nama_pelajaran']) ? $pelajaran[2]['nama_pelajaran'] : 'N/A'; ?></td>
+                <td style="text-align: left;"><?php echo isset($pelajaran[2]['nama_pelajaran']) ? $pelajaran[2]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     foreach ($nilai_mid as $nilai) {
                         if ($nilai['pelajaran_id'] == 5) {
                             echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
-                            break; // Stop looping once you find the match
+                            break;
                         }
                     }
                     ?></td>
-                <td>80</td>
+                <td><?php echo isset($ratakelas_science['nilai_pt']) ? number_format($ratakelas_science['nilai_pt'], 2) : 'N/A'; ?></td>
             </tr>
             <tr>
                 <td>4</td>
-                <!-- ICT -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[3]['nama_pelajaran']) ? $pelajaran[3]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     foreach ($nilai_mid as $nilai) {
                         if ($nilai['pelajaran_id'] == 6) {
                             echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
-                            break; // Stop looping once you find the match
+                            break;
                         }
                     }
                     ?></td>
-                <td>80</td>
+                <td><?php echo isset($ratakelas_ict['nilai_pt']) ? number_format($ratakelas_ict['nilai_pt'], 2) : 'N/A'; ?></td>
             </tr>
             <tr class="table-secondary">
-                <td colspan="4"><strong>Islamic Studies</strong></td>
+                <td colspan="4" style="font-weight: bold;">Islamic Studies</td>
             </tr>
             <tr>
                 <td>1</td>
-                <!-- Tahfidz -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[5]['nama_pelajaran']) ? $pelajaran[5]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     foreach ($nilai_mid as $nilai) {
                         if ($nilai['pelajaran_id'] == 10) {
                             echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
-                            break; // Stop looping once you find the match
+                            break;
                         }
                     }
                     ?></td>
-                <td>80</td>
+                <td><?php echo isset($ratakelas_tahfidz['nilai_pt']) ? number_format($ratakelas_tahfidz['nilai_pt'], 2) : 'N/A'; ?></td>
             </tr>
             <tr>
                 <td>2</td>
-                <!-- Arabic -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[4]['nama_pelajaran']) ? $pelajaran[4]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     foreach ($nilai_mid as $nilai) {
                         if ($nilai['pelajaran_id'] == 8) {
                             echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
-                            break; // Stop looping once you find the match
+                            break;
                         }
                     }
                     ?></td>
-                <td>80</td>
+                <td><?php echo isset($ratakelas_arabic['nilai_pt']) ? number_format($ratakelas_arabic['nilai_pt'], 2) : 'N/A'; ?></td>
             </tr>
         </tbody>
     </table>
-    <table class="table table-bordered mt-3">
+
+    <table class="table table-bordered" style="margin-top: 20px;">
         <thead>
-            <tr>
-                <td>
-                    <strong>Description</strong>
-                </td>
+            <tr class="table-secondary">
+                <td style="font-weight: bold; text-align: center;">Description</td>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Good Job, Keep it up!</td>
+                <td style="text-align: center; padding: 10px;">Good Job, Keep it up!</td>
             </tr>
         </tbody>
-
     </table>
 
-    <p class="text-center mt-5">Jakarta, September 13<sup>th</sup>, 2023</p>
+    <p style="text-align: center; margin-top: 30px;">Jakarta, September 13<sup>th</sup>, 2023</p>
 
-    <table style="width: 100%;">
+    <table style="width: 100%; margin-top: 20px; border: none;">
         <tr style="text-align: center;">
-            <td>Parent Signature</td>
-            <td>Principal Signature</td>
-            <td>Teacher Signature</td>
+            <td style="width: 33.33%; border: none;">Parent Signature</td>
+            <td style="width: 33.33%; border: none;">Principal Signature</td>
+            <td style="width: 33.33%; border: none;">Teacher Signature</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td style="padding: 40px; border: none;">&nbsp;</td>
+            <td style="padding: 40px; border: none;">&nbsp;</td>
+            <td style="padding: 40px; border: none;">&nbsp;</td>
         </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-
         <tr style="text-align: center;">
-            <td style="font-weight: bold; text-decoration: underline;">___________________</td>
-            <td style="font-weight: bold; text-decoration: underline;">Siti Nisrina, S.Pd</td>
-            <td style="font-weight: bold; text-decoration: underline;">Sue</td>
+            <td style="font-weight: bold; text-decoration: underline; border: none;">___________________</td>
+            <td style="font-weight: bold; text-decoration: underline; border: none;">Siti Nisrina, S.Pd</td>
+            <td style="font-weight: bold; text-decoration: underline; border: none;">Sue</td>
         </tr>
-
     </table>
 </body>
 
