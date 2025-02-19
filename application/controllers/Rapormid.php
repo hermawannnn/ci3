@@ -65,19 +65,22 @@ class Rapormid extends CI_Controller
         // Get student data
         $siswa = $this->Siswa_model->get_by_id($siswa_id);
         $nilai_mid = $this->rapormid_model->ambilnilai($siswa_id);
+        $ratakelas = $this->rapormid_model->ratakelas($siswa['kelas_id'], $pelajaran_id);
         $pelajaran = $this->Pelajaran_model->get_all();
 
         $data['siswa'] = $siswa;
         $data['nilai_mid'] = $nilai_mid;
         $data['pelajaran'] = $pelajaran;
+        $data['ratakelas'] = $ratakelas;
 
         echo '<pre>';
-        print_r($data['siswa']);
+        // // print_r($data['siswa']);
         // print_r($data['nilai_mid']);
-        print_r($data['pelajaran']);
+        // print_r($data['pelajaran']);
+        print_r($data['ratakelas']);
         echo '</pre>';
 
-        $this->load->view('print_rapormid_view', $data);
+        // $this->load->view('print_rapormid_view', $data);
     }
 
     public function submit_form()

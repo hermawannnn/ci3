@@ -11,14 +11,20 @@ class Rapormid_model extends CI_Model
 
     public function ambilnilai($siswa_id)
     {
-        $query = $this->db->select('a.id, a.nama, a.nis, a.nisn, b.nama_kelas, e.nama as wali_kelas, c.nama_pelajaran, d.nilai_pt, d.nilai_mt')
-            ->from('siswa a')
-            ->join('kelas b', 'a.kelas_id = b.id')
-            ->join('nilaimid d', 'a.id = d.siswa_id')
-            ->join('pelajaran c', 'c.id = d.pelajaran_id')
-            ->join('users e', 'b.wali_kelas = e.id')
-            ->where('a.id', $siswa_id);
+        $this->db->select('*');
+        $this->db->from('nilaimid');
+        $this->db->where('siswa_id', $siswa_id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
-        return $query->get()->result_array();
+    public function ratakelas($kelas_id, $pelajaran_id)
+    {
+        $this->db->select('kelas_id, AVG(nilai_pt) AS rata_nilai_pt, AVG(nilai_mt) AS rata_nilai_mt');
+        $this->db->from('nilaimid');
+        $this->db->where('kelas_id', $kelas_id);
+        $this->db->where('pelajaran_id', $pelajaran_id);
+        $query = $this->db->get();
+        return $query->row_array();
     }
 }

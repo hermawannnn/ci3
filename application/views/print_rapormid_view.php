@@ -96,28 +96,56 @@
                 <td>1</td>
                 <!-- Math -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[0]['nama_pelajaran']) ? $pelajaran[0]['nama_pelajaran'] : 'N/A'; ?></td>
-                <td></td>
+                <td><?php
+                    foreach ($nilai_mid as $nilai) {
+                        if ($nilai['pelajaran_id'] == 3) {
+                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                            break; // Stop looping once you find the match
+                        }
+                    }
+                    ?></td>
                 <td>80</td>
             </tr>
             <tr>
                 <td>2</td>
                 <!-- English -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[1]['nama_pelajaran']) ? $pelajaran[1]['nama_pelajaran'] : 'N/A'; ?></td>
-                <td></td>
+                <td><?php
+                    foreach ($nilai_mid as $nilai) {
+                        if ($nilai['pelajaran_id'] == 4) {
+                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                            break; // Stop looping once you find the match
+                        }
+                    }
+                    ?></td>
                 <td>80</td>
             </tr>
             <tr>
                 <td>3</td>
                 <!-- Science -->
                 <td style="text-align: left;"> <?php echo isset($pelajaran[2]['nama_pelajaran']) ? $pelajaran[2]['nama_pelajaran'] : 'N/A'; ?></td>
-                <td></td>
+                <td><?php
+                    foreach ($nilai_mid as $nilai) {
+                        if ($nilai['pelajaran_id'] == 5) {
+                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                            break; // Stop looping once you find the match
+                        }
+                    }
+                    ?></td>
                 <td>80</td>
             </tr>
             <tr>
                 <td>4</td>
                 <!-- ICT -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[3]['nama_pelajaran']) ? $pelajaran[3]['nama_pelajaran'] : 'N/A'; ?></td>
-                <td></td>
+                <td><?php
+                    foreach ($nilai_mid as $nilai) {
+                        if ($nilai['pelajaran_id'] == 6) {
+                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                            break; // Stop looping once you find the match
+                        }
+                    }
+                    ?></td>
                 <td>80</td>
             </tr>
             <tr class="table-secondary">
@@ -127,14 +155,28 @@
                 <td>1</td>
                 <!-- Tahfidz -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[5]['nama_pelajaran']) ? $pelajaran[5]['nama_pelajaran'] : 'N/A'; ?></td>
-                <td></td>
+                <td><?php
+                    foreach ($nilai_mid as $nilai) {
+                        if ($nilai['pelajaran_id'] == 10) {
+                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                            break; // Stop looping once you find the match
+                        }
+                    }
+                    ?></td>
                 <td>80</td>
             </tr>
             <tr>
                 <td>2</td>
                 <!-- Arabic -->
                 <td style="text-align: left;"><?php echo isset($pelajaran[4]['nama_pelajaran']) ? $pelajaran[4]['nama_pelajaran'] : 'N/A'; ?></td>
-                <td></td>
+                <td><?php
+                    foreach ($nilai_mid as $nilai) {
+                        if ($nilai['pelajaran_id'] == 8) {
+                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                            break; // Stop looping once you find the match
+                        }
+                    }
+                    ?></td>
                 <td>80</td>
             </tr>
         </tbody>
@@ -187,7 +229,7 @@
         <tr style="text-align: center;">
             <td style="font-weight: bold; text-decoration: underline;">___________________</td>
             <td style="font-weight: bold; text-decoration: underline;">Siti Nisrina, S.Pd</td>
-            <td style="font-weight: bold; text-decoration: underline;"><?php echo $nilai_mid[0]['wali_kelas']; ?></td>
+            <td style="font-weight: bold; text-decoration: underline;">Sue</td>
         </tr>
 
     </table>
