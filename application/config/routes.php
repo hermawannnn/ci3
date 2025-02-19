@@ -57,3 +57,4 @@ $route['raport'] = 'RaportController/index';
 $route['raport/get_siswa_by_kelas'] = 'RaportController/get_siswa_by_kelas';
 $route['raport/save_nilai'] = 'RaportController/save_nilai';
 $route['raport/get_existing_nilai'] = 'RaportController/get_existing_nilai';
+$route['rapormid/print_rapor/(:num)'] = 'rapormid/print_rapor/$1';

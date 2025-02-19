@@ -11,8 +11,7 @@ class Nilai_model extends CI_Model
 
     public function get_all_nilai()
     {
-        $query = $this->db->get('nilaimid');
-        return $query->result_array();
+        return $this->db->get('nilaimid')->result_array();
     }
 
     public function get_nilai_by_id($id)
@@ -42,6 +41,12 @@ class Nilai_model extends CI_Model
             $query = $this->db->get();
             return $query->result_array();
         }
+    }
+
+    public function get_nilai_mid_by_siswa($siswa_id)
+    {
+        $this->db->where('siswa_id', $siswa_id);
+        return $this->db->get('nilaimid')->result_array();
     }
 
     public function insert_nilai($data)

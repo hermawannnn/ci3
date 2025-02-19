@@ -10,9 +10,11 @@ class Siswa_model extends CI_Model
 
     public function get_all()
     {
-        // Query manual
-        $query = $this->db->query('SELECT siswa.*, kelas.nama_kelas FROM siswa JOIN kelas ON siswa.kelas_id = kelas.id');
-        return $query->result();
+        $this->db->select('siswa.*, kelas.nama_kelas');
+        $this->db->from('siswa');
+        $this->db->join('kelas', 'siswa.kelas_id = kelas.id', 'left');
+        $query = $this->db->get();
+        return $query->result_array();  // Changed from result()
     }
 
     public function insert($data)
@@ -25,7 +27,7 @@ class Siswa_model extends CI_Model
     {
         // Mengambil data siswa berdasarkan id
         $query = $this->db->query('SELECT siswa.*, kelas.nama_kelas FROM siswa JOIN kelas ON siswa.kelas_id = kelas.id WHERE siswa.id = ?', array($id));
-        return $query->row();
+        return $query->row_array();
     }
 
     public function update($id, $data)
@@ -60,7 +62,7 @@ class Siswa_model extends CI_Model
         $this->db->select('*');
         $this->db->from('siswa');
         $query = $this->db->get();
-        return $query->result();
+        return $query->result_array();  // Changed from result()
     }
 
     public function get_siswa_by_id($siswa_id)
@@ -69,18 +71,16 @@ class Siswa_model extends CI_Model
         $query = $this->db->get('siswa');
 
         if ($query->num_rows() > 0) {
-            return $query->row();
+            return $query->row_array();  // Changed from row()
         } else {
             return null;
         }
     }
 
-    public function get_siswa()
+    public function get_siswa($id)
     {
-        $this->db->select('*');
-        $this->db->from('siswa');
-        $query = $this->db->get();
-
-        return $query->result_array();
+        $this->db->where('id', $id);
+        $query = $this->db->get('siswa');
+        return $query->row_array();
     }
 }

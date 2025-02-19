@@ -32,7 +32,7 @@
                                     <select class="form-control" name="pelajaran_id" id="pelajaran_id">
                                         <option value="">Semua Pelajaran</option>
                                         <?php foreach ($pelajaran as $pel): ?>
-                                            <option value="<?php echo $pel->id; ?>"><?php echo $pel->nama_pelajaran; ?></option>
+                                            <option value="<?php echo $pel['id']; ?>"><?php echo $pel['nama_pelajaran']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -101,12 +101,15 @@
                                 </thead>
                                 <tbody id="dataMengajar">
                                     <?php foreach ($pembelajaran as $row): ?>
-                                        <tr data-pelajaran="<?php echo $row->pelajaran_id; ?>" data-unit="<?php echo $row->unit_id; ?>" data-kelas="<?php echo $row->kelas_id; ?>" data-user="<?php echo $row->user_id; ?>">
+                                        <tr data-pelajaran="<?php echo $row['pelajaran_id']; ?>"
+                                            data-unit="<?php echo $row['unit_id']; ?>"
+                                            data-kelas="<?php echo $row['kelas_id']; ?>"
+                                            data-user="<?php echo $row['user_id']; ?>">
                                             <td>
                                                 <?php
                                                 foreach ($pelajaran as $pel) {
-                                                    if ($pel->id == $row->pelajaran_id) {
-                                                        echo $pel->nama_pelajaran;
+                                                    if ($pel['id'] == $row['pelajaran_id']) {
+                                                        echo $pel['nama_pelajaran'];
                                                         break;
                                                     }
                                                 }
@@ -115,18 +118,18 @@
                                             <td>
                                                 <?php
                                                 foreach ($units as $unit) {
-                                                    if ($unit->id == $row->unit_id) {
+                                                    if ($unit->id == $row['unit_id']) {
                                                         echo $unit->nama_unit;
                                                         break;
                                                     }
                                                 }
                                                 ?>
                                             </td>
-                                            <td><?php echo $row->nama_kelas; ?></td>
+                                            <td><?php echo $row['nama_kelas']; ?></td>
                                             <td>
                                                 <?php
                                                 foreach ($users as $user) {
-                                                    if ($user->id == $row->user_id) {
+                                                    if ($user->id == $row['user_id']) {
                                                         echo $user->nama;
                                                         break;
                                                     }
@@ -134,8 +137,8 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $row->id; ?>">Edit</a>
-                                                <a href="<?php echo site_url('pembelajaran/hapus/' . $row->id); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?');">Hapus</a>
+                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $row['id']; ?>">Edit</a>
+                                                <a href="<?php echo site_url('pembelajaran/hapus/' . $row['id']); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?');">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -180,7 +183,7 @@
                         <label>Pelajaran</label>
                         <select class="form-control" name="pelajaran_id" required>
                             <?php foreach ($pelajaran as $pel): ?>
-                                <option value="<?php echo $pel->id; ?>"><?php echo $pel->nama_pelajaran; ?></option>
+                                <option value="<?php echo $pel['id']; ?>"><?php echo $pel['nama_pelajaran']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -223,7 +226,7 @@
 </div>
 <!-- Modal Edit -->
 <?php foreach ($pembelajaran as $row): ?>
-    <div class="modal fade" id="modal-edit-<?php echo $row->id; ?>">
+    <div class="modal fade" id="modal-edit-<?php echo $row['id']; ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -234,12 +237,12 @@
                 </div>
                 <form action="<?php echo site_url('pembelajaran/update'); ?>" method="post">
                     <div class="modal-body">
-                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                         <div class="form-group">
                             <label>Pelajaran</label>
                             <select class="form-control" name="pelajaran_id" required>
                                 <?php foreach ($pelajaran as $pel): ?>
-                                    <option value="<?php echo $pel->id; ?>" <?php echo ($pel->id == $row->pelajaran_id) ? 'selected' : ''; ?>><?php echo $pel->nama_pelajaran; ?></option>
+                                    <option value="<?php echo $pel['id']; ?>" <?php echo ($pel['id'] == $row['pelajaran_id']) ? 'selected' : ''; ?>><?php echo $pel['nama_pelajaran']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -247,7 +250,7 @@
                             <label>Unit</label>
                             <select class="form-control" name="unit_id" required>
                                 <?php foreach ($units as $unit): ?>
-                                    <option value="<?php echo $unit->id; ?>" <?php echo ($unit->id == $row->unit_id) ? 'selected' : ''; ?>><?php echo $unit->nama_unit; ?></option>
+                                    <option value="<?php echo $unit->id; ?>" <?php echo ($unit->id == $row['unit_id']) ? 'selected' : ''; ?>><?php echo $unit->nama_unit; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -255,7 +258,7 @@
                             <label>Kelas</label>
                             <select class="form-control" name="kelas_id" required>
                                 <?php foreach ($kelas as $k): ?>
-                                    <option value="<?php echo $k->id; ?>" <?php echo ($k->id == $row->kelas_id) ? 'selected' : ''; ?>><?php echo $k->nama_kelas; ?></option>
+                                    <option value="<?php echo $k->id; ?>" <?php echo ($k->id == $row['kelas_id']) ? 'selected' : ''; ?>><?php echo $k->nama_kelas; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -264,7 +267,7 @@
                             <select class="form-control" name="user_id" required>
                                 <?php foreach ($users as $user): ?>
                                     <?php if ($user->role == 'guru'): ?>
-                                        <option value="<?php echo $user->id; ?>" <?php echo ($user->id == $row->user_id) ? 'selected' : ''; ?>><?php echo $user->nama; ?></option>
+                                        <option value="<?php echo $user->id; ?>" <?php echo ($user->id == $row['user_id']) ? 'selected' : ''; ?>><?php echo $user->nama; ?></option>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>

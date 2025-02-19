@@ -18,7 +18,8 @@ class Pembelajaran_model extends CI_Model
         $this->db->join('kelas c', 'c.id = a.kelas_id', 'inner');
         $this->db->join('users d', 'd.id = a.user_id', 'inner');
         $this->db->join('units e', 'e.id = a.unit_id', 'inner');
-        return $this->db->get()->result();
+        // return $this->db->get()->result();
+        return $this->db->get()->result_array();
     }
 
     public function insert($data)

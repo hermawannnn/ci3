@@ -47,18 +47,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($siswa as $item): ?>
+                                    <?php if (!empty($siswa)): ?>
+                                        <?php foreach ($siswa as $s): ?>
+                                            <tr>
+                                                <td><?php echo isset($s['nama']) ? $s['nama'] : ''; ?></td>
+                                                <td><?php echo isset($s['nis']) ? $s['nis'] : ''; ?></td>
+                                                <td><?php echo isset($s['nisn']) ? $s['nisn'] : ''; ?></td>
+                                                <td><?php echo isset($s['nama_kelas']) ? $s['nama_kelas'] : ''; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $s['id']; ?>">Edit</button>
+                                                    <a href="<?php echo site_url('siswa/hapus/' . $s['id']); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus siswa ini?');">Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
                                         <tr>
-                                            <td><?php echo $item->nama; ?></td>
-                                            <td><?php echo $item->nis; ?></td>
-                                            <td><?php echo $item->nisn; ?></td>
-                                            <td><?php echo $item->nama_kelas; ?></td> <!-- Access the 'nama_kelas' property -->
-                                            <td>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $item->id; ?>">Edit</button>
-                                                <a href="<?php echo site_url('siswa/hapus/' . $item->id); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus siswa ini?');">Hapus</a>
-                                            </td>
+                                            <td colspan="5" class="text-center">Tidak ada data siswa</td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -86,7 +92,7 @@
 <!-- /.content-wrapper -->
 
 <?php foreach ($siswa as $item): ?>
-    <div class="modal fade" id="modal-edit-<?php echo $item->id; ?>">
+    <div class="modal fade" id="modal-edit-<?php echo $item['id']; ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -98,24 +104,24 @@
                 <div class="modal-body">
                     <div class="card-body">
                         <form action="<?php echo site_url('siswa/update'); ?>" method="post">
-                            <input type="hidden" name="id" value="<?php echo $item->id; ?>">
+                            <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $item->nama; ?>" required>
+                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $item['nama']; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="nis">NIS</label>
-                                <input type="text" class="form-control" id="nis" name="nis" value="<?php echo $item->nis; ?>" required>
+                                <input type="text" class="form-control" id="nis" name="nis" value="<?php echo $item['nis']; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="nisn">NISN</label>
-                                <input type="text" class="form-control" id="nisn" name="nisn" value="<?php echo $item->nisn; ?>" required>
+                                <input type="text" class="form-control" id="nisn" name="nisn" value="<?php echo $item['nisn']; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="kelas">Kelas</label>
                                 <select class="form-control" id="kelas" name="kelas" required>
                                     <?php foreach ($kelas as $row): ?>
-                                        <option value="<?php echo $row->id; ?>" <?php echo ($row->id == $item->kelas_id) ? 'selected' : ''; ?>><?php echo $row->nama_kelas; ?></option>
+                                        <option value="<?php echo $row->id; ?>" <?php echo ($row->id == $item['kelas_id']) ? 'selected' : ''; ?>><?php echo $row->nama_kelas; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

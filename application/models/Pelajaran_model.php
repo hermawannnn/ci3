@@ -11,7 +11,7 @@ class Pelajaran_model extends CI_Model
     {
         // Mengambil semua data pelajaran
         $query = $this->db->query('SELECT * FROM pelajaran');
-        return $query->result();
+        return $query->result_array(); // Changed from result()
     }
 
     public function insert($data)

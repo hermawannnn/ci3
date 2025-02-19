@@ -13,7 +13,9 @@ class Siswa extends CI_Controller
         if (!in_array($this->session->userdata('role'), ['admin', 'guru'])) {
             show_error('You do not have permission to access this page.', 403);
         }
-        $this->load->model(array('siswa_model', 'kelas_model'));
+        // $this->load->model(array('siswa_model', 'kelas_model'));
+        $this->load->model('siswa_model');
+        $this->load->model('kelas_model');
     }
 
     public function index()

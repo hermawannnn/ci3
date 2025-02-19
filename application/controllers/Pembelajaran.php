@@ -29,6 +29,10 @@ class Pembelajaran extends CI_Controller
         $data['units'] = $this->unit_model->get_all();
         $data['pelajaran'] = $this->Pelajaran_model->get_all();
 
+        // echo '<pre>';
+        // print_r($data['pelajaran']);
+        // echo '</pre>';
+
         // Menampilkan halaman kelas dengan data
         $this->load->view('template/header');
         $this->load->view('template/sidebar');

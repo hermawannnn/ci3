@@ -47,23 +47,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($pelajaran as $row): ?>
-                                        <tr>
-                                            <td><?php echo $row->nama_pelajaran; ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $row->id; ?>">Edit</button>
-                                                <a href="<?php echo site_url('pelajaran/hapus/' . $row->id); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pelajaran ini?');">Hapus</a>
+                                    <?php if (!empty($pelajaran)): ?>
+                                        <?php foreach ($pelajaran as $p): ?>
+                                            <tr>
+                                                <td><?php echo isset($p['nama_pelajaran']) ? $p['nama_pelajaran'] : ''; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $p['id']; ?>">Edit</button>
+                                                    <a href="<?php echo site_url('pelajaran/hapus/' . $p['id']); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pelajaran ini?');">Hapus</a>
 
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Nama Mata Pelajaran</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </tfoot>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="2">Belum ada data pelajaran</td>
+                                </tr>
+                            <?php endif; ?>
+                            <tfoot>
+                                <tr>
+                                    <th>Nama Mata Pelajaran</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -81,7 +87,7 @@
 <!-- /.content-wrapper -->
 
 <?php foreach ($pelajaran as $row): ?>
-    <div class="modal fade" id="modal-edit-<?php echo $row->id; ?>">
+    <div class="modal fade" id="modal-edit-<?php echo $row['id']; ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -92,10 +98,10 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo site_url('pelajaran/update'); ?>" method="post">
-                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                         <div class="form-group">
                             <label for="nama_pelajaran">Nama Mata Pelajaran</label>
-                            <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" value="<?php echo $row->nama_pelajaran; ?>" required>
+                            <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" value="<?php echo $row['nama_pelajaran']; ?>" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
