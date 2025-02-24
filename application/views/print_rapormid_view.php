@@ -189,7 +189,9 @@
         </thead>
         <tbody>
             <tr>
-                <td style="text-align: center; padding: 10px;">Good Job, Keep it up!</td>
+                <td style="text-align: center; padding: 10px;">
+                    <?php echo isset($deskripsi_nilai['deskripsi']) ? $deskripsi_nilai['deskripsi'] : 'No description available'; ?>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -210,7 +212,11 @@
         <tr style="text-align: center;">
             <td style="font-weight: bold; text-decoration: underline; border: none;">___________________</td>
             <td style="font-weight: bold; text-decoration: underline; border: none;">Siti Nisrina, S.Pd</td>
-            <td style="font-weight: bold; text-decoration: underline; border: none;">Sue</td>
+            <td style="font-weight: bold; text-decoration: underline; border: none;">
+                <?php
+                echo isset($walikelas['nama']) ? $walikelas['nama'] : 'N/A';
+                ?>
+            </td>
         </tr>
     </table>
 </body>

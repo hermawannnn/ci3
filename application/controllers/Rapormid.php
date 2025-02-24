@@ -75,6 +75,8 @@ class Rapormid extends CI_Controller
         $ratakelas_ict = $this->rapormid_model->ratakelas($kelas_id, 6); // pelajaran_id 6 = ICT
         $ratakelas_tahfidz = $this->rapormid_model->ratakelas($kelas_id, 10); // pelajaran_id 10 = Tahfidz
         $ratakelas_arabic = $this->rapormid_model->ratakelas($kelas_id, 8); // pelajaran_id 8 = Arabic
+        $deskripsi_nilai = $this->rapormid_model->ambilDeskripsi($siswa_id);
+        $walikelas = $this->rapormid_model->getWaliKelas($kelas_id);
 
         $data['siswa'] = $siswa;
         $data['nilai_mid'] = $nilai_mid;
@@ -86,6 +88,8 @@ class Rapormid extends CI_Controller
         $data['ratakelas_ict'] = $ratakelas_ict;
         $data['ratakelas_tahfidz'] = $ratakelas_tahfidz;
         $data['ratakelas_arabic'] = $ratakelas_arabic;
+        $data['deskripsi_nilai'] = $deskripsi_nilai;
+        $data['walikelas'] = $walikelas;
 
         // echo '<pre>';
         // print_r($data['nilai_mid']);
