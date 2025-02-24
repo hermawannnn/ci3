@@ -17,9 +17,9 @@ class Nilaideskripsimid extends CI_Controller
         $data['kelas'] = $this->Nilaideskripsimid_model->getAllKelas();
         $data['siswa'] = $this->Nilaideskripsimid_model->getAllSiswa();
 
-        echo '<pre>';
-        print_r($data['kelas']);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($data['kelas']);
+        // echo '</pre>';
 
 
         $this->load->view('template/header');
@@ -66,6 +66,48 @@ class Nilaideskripsimid extends CI_Controller
     public function delete($id)
     {
         $this->Nilaideskripsimid_model->delete($id);
+        redirect('nilaideskripsimid');
+    }
+
+    public function get_siswa_by_kelas($kelas_id)
+    {
+        $this->load->model('Siswa_model');
+        $siswa = $this->Siswa_model->get_siswa_by_kelas($kelas_id);
+        echo json_encode($siswa);
+    }
+
+    public function get_nilaidesk_by_kelas($kelas_id)
+    {
+        $nilaidesk = $this->Nilaideskripsimid_model->get_nilaidesk_by_kelas($kelas_id);
+        echo json_encode($nilaidesk);
+    }
+
+    public function create()
+    {
+        $deskripsi = $this->input->post('deskripsi');
+
+        // Debug received data
+        // log_message('debug', 'Received POST data: ' . print_r($_POST, true));
+
+        if (is_array($deskripsi)) {
+            foreach ($deskripsi as $siswa_id => $desc) {
+                // Skip empty descriptions
+                if (empty($desc)) continue;
+
+                $data = array(
+                    'siswa_id' => $siswa_id,
+                    'deskripsi' => $desc
+                );
+
+                // Debug data being saved
+                log_message('debug', 'Saving data: ' . print_r($data, true));
+
+                // Directly try to insert/update
+                $this->Nilaideskripsimid_model->save_or_update($data);
+            }
+        }
+
+
         redirect('nilaideskripsimid');
     }
 }

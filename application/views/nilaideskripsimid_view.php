@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Nilai Deskripsi MID</h3>
-                            <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-tambah">Tambah Data</a>
+                            <!-- <a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-tambah">Tambah Data</a> -->
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -36,7 +36,8 @@
                                 <?php endforeach; ?>
                             </select>
                             <br>
-                            <form action="">
+                            <form action="<?php echo site_url('nilaideskripsimid/create') ?>" method="post" id="nilaideskripsi_form">
+                                <input type="hidden" name="kelas_id" id="kelas_id_hidden">
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -45,7 +46,7 @@
                                             <th>Deskripsi</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="nilaideskripsimid">
+                                    <tbody id="nilai_table_body">
                                         <!-- Nanati tampil semua data siswa di sini -->
                                     </tbody>
                                     <tfoot>
@@ -56,6 +57,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </form>
                         </div>
 
@@ -73,22 +75,42 @@
 </div>
 <!-- /.content-wrapper -->
 <script>
-    document.getElementById('filter_kelas_id').addEventListener('change', function) {
-        var kelas_id = this.value;
-        var tbody = document.getElementById('nilaideskripsimid');
-        tbody.innerHTML = '';
-        fetch(`<?= site_url('nilaideskripsimid/getByKelasId/') ?>${kelas_id}`)
-            .then(response => response.json())
-            .then(data => {
-                data.forEach((item, index) => {
-                    var tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${index + 1}</td>
-                        <td>${item.nama_siswa}</td>
-                        <td>${item.deskripsi}</td>
-                    `;
-                    tbody.appendChild(tr);
+    // Menambahkan event listener untuk perubahan pada elemen dengan id 'filter_kelas_id'
+    document.getElementById('filter_kelas_id').addEventListener('change', function() {
+        var kelas_id = this.value; // Mendapatkan nilai dari elemen yang berubah
+        document.getElementById('kelas_id_hidden').value = kelas_id; // Menyimpan nilai kelas_id ke elemen tersembunyi
+        if (kelas_id) { // Jika kelas_id memiliki nilai
+            // Melakukan fetch data siswa berdasarkan kelas_id
+            fetch('<?php echo site_url('nilaideskripsimid/get_nilaidesk_by_kelas/'); ?>' + kelas_id)
+                .then(response => response.json()) // Mengubah response menjadi JSON
+                .then(data => {
+                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilai
+                    tableBody.innerHTML = ''; // Mengosongkan isi tabel
+                    data.forEach(function(siswa, index) { // Iterasi melalui data siswa
+                        var row = document.createElement('tr'); // Membuat elemen baris tabel
+                        // Menambahkan isi baris tabel dengan data siswa
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${siswa.nama_siswa}</td>
+                            <td><textarea class="form-control" name="deskripsi[${siswa.siswa_id}]">${siswa.deskripsi !== null ? siswa.deskripsi : ''}</textarea></td>
+                        `;
+                        tableBody.appendChild(row); // Menambahkan baris ke tabel
+                    });
                 });
-            });
-    }
+        } else { // Jika kelas_id tidak memiliki nilai
+            document.getElementById('nilaideskripsi_form').style.display = 'none'; // Menyembunyikan form nilai
+            // Mengosongkan isi tabel jika tidak ada kelas yang dipilih
+            document.getElementById('nilai_table_body').innerHTML = '';
+        }
+    });
+
+    // Menambahkan event listener untuk submit form
+    document.getElementById('nilaideskripsi_form').addEventListener('submit', function(event) {
+        var textareas = document.querySelectorAll('textarea[name^="deskripsi"]');
+        textareas.forEach(function(textarea) {
+            if (textarea.value.trim() === '') {
+                textarea.value = null; // Mengisi dengan null jika textarea kosong
+            }
+        });
+    });
 </script>
