@@ -78,8 +78,8 @@
 
         <!-- Teacher Menu Items -->
         <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('role') == 'guru'): ?>
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid') ? 'menu-open' : ''; ?>">
-            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'raport' || $this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
+          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'menu-open' : ''; ?>">
+            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Nilai Tengah Semester
@@ -92,6 +92,13 @@
                   class="nav-link <?php echo ($this->uri->segment(1) == 'nilai') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Input NTS</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('nilaideskripsimid'); ?>"
+                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
+                  <i class="nav-icon far fa-circle"></i>
+                  <p>Input Nilai Deskripsi</p>
                 </a>
               </li>
               <li class="nav-item">
