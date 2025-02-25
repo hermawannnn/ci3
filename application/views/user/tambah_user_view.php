@@ -45,7 +45,7 @@
                                     <label for="role">Role</label>
                                     <select name="role" class="form-control" required>
                                         <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                        <option value="guru">Guru</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
