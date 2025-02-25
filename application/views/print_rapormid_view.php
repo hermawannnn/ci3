@@ -10,18 +10,29 @@
     <style>
         @font-face {
             font-family: dauphin;
-            src: url(<?php echo base_url() ?>aset/dist/font/dauphin.ttf)
+            src: url(<?php echo base_url() ?>aset/dist/dauphin.ttf)
         }
+
+        @font-face {
+            font-family: Monotype Corsiva;
+            src: url(<?php echo base_url() ?>aset/dist/arial.ttf)
+        }
+
 
         body {
             font-family: Arial, sans-serif;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         .bp {
             font-family: 'dauphin';
             font-weight: bold;
             font-size: 25px;
+        }
+
+        .ds {
+            font-family: 'Monotype Corsiva';
+            font-size: 16px;
         }
 
         table {
@@ -63,15 +74,17 @@
 </head>
 
 <body>
+    <br>
+    <br>
     <div style="text-align: center; margin-bottom: 20px;">
         <img src="<?php echo base_url() ?>aset/dist/img/logo-ais.png" width="100px" alt="Logo Ananda Islamic School">
         <br>
         <span class="bp">SDS Ananda Islamic School</span>
         <br>
-        <p style="font-size: 10px; margin-top: 5px;">PROGRESS REPORT & MID TEST RESULT<br>2024/2025</p>
+        <p style="font-size: 10px; margin-top: 5px;"><strong>PROGRESS REPORT & MID TEST RESULT<br>2024/2025</strong></p>
     </div>
 
-    <table style="width: 100%; margin-bottom: 20px; border: none;">
+    <!-- <table style="width: 100%; margin-bottom: 20px; border: none;">
         <tr>
             <td style="width: 70%; text-align: left; padding: 8px; border: none; font-size: 14px;">
                 <p style="margin: 5px 0;"><strong>Student Name:</strong> <?php echo isset($siswa['nama']) ? $siswa['nama'] : 'Data Kosong'; ?></p>
@@ -81,6 +94,24 @@
                 <p style="margin: 5px 0;"><strong>Class:</strong> Primary <?php echo isset($siswa['nama_kelas']) ? $siswa['nama_kelas'] : 'Data Kosong'; ?></p>
                 <p style="margin: 5px 0;"><strong>Semester:</strong> Semester 1</p>
             </td>
+        </tr>
+    </table> -->
+    <table style="width: 100%; margin-bottom: 20px; border: none;">
+        <tr>
+            <td style="width: 15%; text-align: left; border: none; padding: 2px;"><strong>Student Name</strong></td>
+            <td style="width: 1%; text-align: left; border: none; padding: 2px;">: </td>
+            <td style="width: 54%; text-align: left; border: none; padding: 2px;"><?php echo isset($siswa['nama']) ? $siswa['nama'] : 'Data Kosong'; ?></td>
+            <td style="width: 10%; text-align: left; border: none; padding: 2px;"><strong>Class</strong></td>
+            <td style="width: 1%; text-align: left; border: none; padding: 2px;">: </td>
+            <td style="width: 19%; text-align: left; border: none; padding: 2px;">Primary <?php echo isset($siswa['nama_kelas']) ? $siswa['nama_kelas'] : 'Data Kosong'; ?></td>
+        </tr>
+        <tr>
+            <td style="width: 15%; text-align: left; border: none; padding: 2px;"><strong>NIS / NISN</strong></td>
+            <td style="width: 1%; text-align: left; border: none; padding: 2px;">: </td>
+            <td style="width: 54%; text-align: left; border: none; padding: 2px;"><?php echo isset($siswa['nis']) ? $siswa['nis'] : 'Data Kosong'; ?> / <?php echo isset($siswa['nisn']) ? $siswa['nisn'] : 'Data Kosong'; ?></td>
+            <td style="width: 10%; text-align: left; border: none; padding: 2px;"><strong>Semester</strong></td>
+            <td style="width: 1%; text-align: left; border: none; padding: 2px;">: </td>
+            <td style="width: 19%; text-align: left; border: none; padding: 2px;">2</td>
         </tr>
     </table>
 
@@ -189,14 +220,14 @@
         </thead>
         <tbody>
             <tr>
-                <td style="text-align: center; padding: 10px;">
-                    <?php echo isset($deskripsi_nilai['deskripsi']) ? $deskripsi_nilai['deskripsi'] : 'No description available'; ?>
+                <td class="ds" style="text-align: center; padding: 8px !important; line-height: 1.5; margin-bottom: 10px;">
+                    <?php echo isset($deskripsi_nilai['deskripsi']) ? nl2br($deskripsi_nilai['deskripsi']) : 'No description available'; ?>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <p style="text-align: center; margin-top: 30px;">Jakarta, September 13<sup>th</sup>, 2023</p>
+    <p style=" text-align: center; margin-top: 30px;">Jakarta, March 21<sup>st</sup>, 2023</p>
 
     <table style="width: 100%; margin-top: 20px; border: none;">
         <tr style="text-align: center;">

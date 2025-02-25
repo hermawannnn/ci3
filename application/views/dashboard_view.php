@@ -24,6 +24,9 @@
                 <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
+
+                        TAMAT
+                        <img src="https://c.tenor.com/P_MpzdIq6okAAAAd/tenor.gif" alt="" width="200px">
                         Di Buat Sepenuh Hati dari Malika Biji Kedelai Pilihan <br>
                         <marquee behavior="" direction="">wadaw</marquee><br>
                         <h1>
@@ -42,6 +45,7 @@
                         <marquee behavior="scroll" direction="left">IYAAAAAAA TAUUUU
                             <img src="https://media.tenor.com/mo6Te6bSxEcAAAAi/quby-run.gif" alt="Wadaws">
                         </marquee>
+
                     </div>
                     <!-- /.card -->
                 </div>

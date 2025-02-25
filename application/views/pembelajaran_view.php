@@ -17,7 +17,7 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- Filter Section -->
-    <section class="content">
+    <!-- <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

@@ -90,7 +90,10 @@
                         row.innerHTML = `
                                 <td>${index + 1}</td>
                                 <td>${siswa.nama}</td>
-                                <td><button class="btn btn-secondary" onclick="printRapor(${siswa.id})">Print</button></td>
+                                <td>
+                                    <button class="btn btn-secondary" onclick="printRapor(${siswa.id})">Print</button>
+                                    <button class="btn btn-primary" onclick="saveRaporToPdf(${siswa.id})">Save to PDF</button>
+                                </td>
                             `;
                         tableBody.appendChild(row);
                     });
@@ -100,6 +103,10 @@
 
     function printRapor(siswaId) {
         window.open('<?php echo site_url('rapormid/print_rapor/'); ?>' + siswaId, '_blank');
+    }
+
+    function saveRaporToPdf(siswaId) {
+        window.location.href = '<?php echo site_url('rapormid/save_rapor_pdf/'); ?>' + siswaId;
     }
 </script>
 </body>
