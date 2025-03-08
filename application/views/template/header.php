@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>aset/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>aset/dist/css/adminlte.min.css">
-
+  <link rel="icon" type="image/png" href="<?php echo base_url() ?>aset/dist/img/logo.png">
 </head>
 <!--
 `body` tag options:
@@ -43,8 +43,13 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="<?php echo site_url('login/logout'); ?>" class="nav-link">Log Out</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Role: <b><?php echo $this->session->userdata('role'); ?></b></a>
+        </li> -->
+        <li class="nav-item d-none d-sm-inline-block">
+          <marquee behavior="scroll" direction="right">CEPETAAANNN
+            <img src="https://media.tenor.com/h5b-nbmzlT8AAAAi/pepeeee.gif" alt="Wadaws" width="20" height="20">
+          </marquee>
         </li>
       </ul>
     </nav>

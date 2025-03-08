@@ -2,6 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="<?php base_url() ?>" class="brand-link">
+    <img src="<?php echo base_url('aset/dist/img/logo.png'); ?>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">Rapor | AIS</span>
   </a>
 
@@ -95,26 +96,28 @@
                   <p>Input NTS</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('nilaideskripsimid'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
-                  <i class="nav-icon far fa-circle"></i>
-                  <p>Input Nilai Deskripsi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('rapormid'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
-                  <i class="nav-icon far fa-circle"></i>
-                  <p>Rapor Mid Semester</p>
-                </a>
-              </li>
+              <?php if ($this->session->userdata('role') == 'admin' || is_wali_kelas($this->session->userdata('id'))): ?>
+                <li class="nav-item">
+                  <a href="<?php echo site_url('nilaideskripsimid'); ?>"
+                    class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Input Nilai Deskripsi</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?php echo site_url('rapormid'); ?>"
+                    class="nav-link <?php echo ($this->uri->segment(1) == 'rapormid') ? 'active' : ''; ?>">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Rapor Mid Semester</p>
+                  </a>
+                </li>
+              <?php endif; ?>
             </ul>
           </li>
 
           <!-- Nilai Final Test -->
 
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'menu-open' : ''; ?>">
+          <!-- <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'menu-open' : ''; ?>">
             <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -159,7 +162,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
 
         <?php endif; ?>
       </ul>

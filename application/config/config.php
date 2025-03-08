@@ -24,8 +24,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://192.168.1.56/ci3/';
-$config['base_url'] = 'http://192.168.1.200/ci3/';
-// $config['base_url'] = 'http://localhost/ci3/';
+// $config['base_url'] = 'http://192.168.1.200/ci3/';
+$config['base_url'] = 'http://localhost/ci3/';
 
 /*
 |--------------------------------------------------------------------------

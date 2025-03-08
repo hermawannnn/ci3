@@ -24,30 +24,72 @@
                 <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Informasi Data Mengajar</strong></h3>
+                        </div>
 
-                        TAMAT
-                        <img src="https://c.tenor.com/P_MpzdIq6okAAAAd/tenor.gif" alt="" width="200px">
-                        Di Buat Sepenuh Hati dari Malika Biji Kedelai Pilihan <br>
-                        <marquee behavior="" direction="">wadaw</marquee><br>
-                        <h1>
-                            <marquee behavior="alternate" direction="" style="color: red; animation: blink 1s step-end infinite;">Sodara Oji memang wadaw</marquee>
-                            <style>
-                                @keyframes blink {
-                                    50% {
-                                        color: transparent;
-                                    }
-                                }
-                            </style>
-                        </h1>
-                        <marquee behavior="scroll" direction="right">CEPETAAANNN
-                            <img src="https://media.tenor.com/h5b-nbmzlT8AAAAi/pepeeee.gif" alt="Wadaws">
-                        </marquee>
-                        <marquee behavior="scroll" direction="left">IYAAAAAAA TAUUUU
-                            <img src="https://media.tenor.com/mo6Te6bSxEcAAAAi/quby-run.gif" alt="Wadaws">
-                        </marquee>
+                        <div class="card-body">
+                            <form method="post" class="mb-4">
+                                <div class="form-group row">
+                                    <label for="kelas_id" class="col-sm-2 col-form-label">Pilih Kelas:</label>
+                                    <div class="col-sm-4">
+                                        <select name="kelas_id" id="kelas_id" class="form-control" onchange="this.form.submit()">
+                                            <option value="">Pilih Kelas</option>
+                                            <?php foreach ($kelas_list as $kelas): ?>
+                                                <option value="<?= $kelas->id ?>" <?= ($selected_kelas == $kelas->id ? 'selected' : '') ?>>
+                                                    <?= $kelas->nama_kelas ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <?php if ($selected_kelas): ?>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kelas</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Guru</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($pembelajaran as $row):
+                                        ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $row->nama_kelas ?></td>
+                                                <td><?= $row->nama_pelajaran ?></td>
+                                                <td><?= $row->nama ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                *Jika data terdapat kesalahan, silakan hubungi admin
+                            <?php else: ?>
+                                <div class="text-center">
+                                    <p>Silakan pilih kelas terlebih dahulu untuk menampilkan data</p>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
+
+                        <!-- /.card-body -->
+
 
                     </div>
                     <!-- /.card -->
+                    <marquee behavior="scroll" direction="right">CEPETAAANNN
+                        <img src="https://media.tenor.com/h5b-nbmzlT8AAAAi/pepeeee.gif" alt="Wadaws" width="50" height="50">
+                    </marquee>
+                    <marquee behavior="scroll" direction="left">IYAAAAAAA TAUUUU
+                        <img src="https://media.tenor.com/mo6Te6bSxEcAAAAi/quby-run.gif" alt="Wadaws" width="50" height="50">
+                    </marquee>
                 </div>
                 <!-- /.col -->
             </div>
