@@ -32,7 +32,9 @@
                             <select class="form-control" id="filter_kelas_id">
                                 <option value="">Pilih Kelas</option>
                                 <?php foreach ($kelas as $k): ?>
-                                    <option value="<?= $k['id']; ?>"><?= $k['nama_kelas']; ?></option>
+                                    <?php if ($this->session->userdata('role') == 'admin' || $k['wali_kelas'] == $this->session->userdata('id')): ?>
+                                        <option value="<?= $k['id']; ?>"><?= $k['nama_kelas']; ?></option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                             <br>

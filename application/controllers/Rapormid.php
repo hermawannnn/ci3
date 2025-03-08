@@ -24,6 +24,10 @@ class Rapormid extends CI_Controller
         $data['nilai'] = $this->Nilai_model->get_all_nilai();
         $data['kelas'] = $this->Kelas_model->get_all_kelas();
 
+        // echo '<pre>';
+        // print_r($data['kelas']);
+        // echo '</pre>';
+
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
         $this->load->view('rapormid_view', $data);
