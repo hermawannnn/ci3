@@ -83,19 +83,6 @@
         <br>
         <p style="font-size: 10px; margin-top: 5px;"><strong>PROGRESS REPORT & MID TEST RESULT<br>2024/2025</strong></p>
     </div>
-
-    <!-- <table style="width: 100%; margin-bottom: 20px; border: none;">
-        <tr>
-            <td style="width: 70%; text-align: left; padding: 8px; border: none; font-size: 14px;">
-                <p style="margin: 5px 0;"><strong>Student Name:</strong> <?php echo isset($siswa['nama']) ? $siswa['nama'] : 'Data Kosong'; ?></p>
-                <p style="margin: 5px 0;"><strong>NIS / NISN:</strong> <?php echo isset($siswa['nis']) ? $siswa['nis'] : 'Data Kosong'; ?> / <?php echo isset($siswa['nisn']) ? $siswa['nisn'] : 'Data Kosong'; ?></p>
-            </td>
-            <td style="width: 30%; text-align: left; padding: 8px; border: none; font-size: 14px;">
-                <p style="margin: 5px 0;"><strong>Class:</strong> Primary <?php echo isset($siswa['nama_kelas']) ? $siswa['nama_kelas'] : 'Data Kosong'; ?></p>
-                <p style="margin: 5px 0;"><strong>Semester:</strong> Semester 1</p>
-            </td>
-        </tr>
-    </table> -->
     <table style="width: 100%; margin-bottom: 20px; border: none;">
         <tr>
             <td style="width: 15%; text-align: left; border: none; padding: 2px;"><strong>Student Name</strong></td>
@@ -227,7 +214,7 @@
         </tbody>
     </table>
 
-    <p style=" text-align: center; margin-top: 30px;">Jakarta, March 21<sup>st</sup>, 2023</p>
+    <p style=" text-align: center; margin-top: 30px;">Jakarta, March 20<sup>th</sup>, 2025</p>
 
     <table style="width: 100%; margin-top: 20px; border: none;">
         <tr style="text-align: center;">

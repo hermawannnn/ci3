@@ -108,7 +108,8 @@
     }
 
     function saveRaporToPdf(siswaId) {
-        window.location.href = '<?php echo site_url('rapormid/save_rapor_pdf/'); ?>' + siswaId;
+        window.open('<?php echo site_url('rapormid/save_rapor_pdf/'); ?>' + siswaId, '_blank');
+        // window.location.href = '<?php echo site_url('rapormid/save_rapor_pdf/'); ?>' + siswaId;
     }
 </script>
 </body>
