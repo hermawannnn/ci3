@@ -22,14 +22,32 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <!-- /.card-header -->
-                        <div class="card-header">
-                            <h3 class="card-title"><strong></strong></h3>
-                            <div style="text-align: center;">
-                                <img src="https://media.tenor.com/yCFHzEvKa9MAAAAi/hello.gif" alt="Hello" width="100" height="100">
-                                <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?>, Tetap Semangar Yaw!</span>
-                                <img src="https://media.tenor.com/-MlEF7aRcA0AAAAi/tkthao219-quby.gif" alt="Quby" width="100" height="100">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-header">
+                                    <h3 class="card-title"><strong></strong></h3>
+                                    <div style="text-align: center;">
+                                        <img src="https://media.tenor.com/yCFHzEvKa9MAAAAi/hello.gif" alt="Hello" width="100" height="100">
+                                        <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?>, Tetap Semangar Yaw!</span>
+                                        <img src="https://media.tenor.com/-MlEF7aRcA0AAAAi/tkthao219-quby.gif" alt="Quby" width="100" height="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title"><strong>Update Terakhir</strong></h3>
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Secara Default Nilai terisi dengan nilai 0, silahkan isi nilai dengan benar</li>
+                                        <li>Periksa Kemabli Nilai yang sudah di masukan, karna kemarin masih random nilainya</li>
+                                        <li>Untuk admin bisa dapat di tanyakan ke Ahmad Irfan Fauzi, Hermawan, Andriansyah, dan Fauzi Supandi</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,12 +114,16 @@
 
                     </div>
                     <!-- /.card -->
-                    <marquee behavior="scroll" direction="right">CEPETAAANNN
-                        <img src="https://media.tenor.com/h5b-nbmzlT8AAAAi/pepeeee.gif" alt="Wadaws" width="50" height="50">
-                    </marquee>
-                    <marquee behavior="scroll" direction="left">IYAAAAAAA TAUUUU
-                        <img src="https://media.tenor.com/mo6Te6bSxEcAAAAi/quby-run.gif" alt="Wadaws" width="50" height="50">
-                    </marquee>
+                    <div class="card">
+                        <div class="card-body">
+                            <marquee behavior="scroll" direction="right">CEPETAAANNN
+                                <img src="https://media.tenor.com/h5b-nbmzlT8AAAAi/pepeeee.gif" alt="Wadaws" width="50" height="50">
+                            </marquee>
+                            <marquee behavior="scroll" direction="left">IYAAAAAAA TAUUUU
+                                <img src="https://media.tenor.com/mo6Te6bSxEcAAAAi/quby-run.gif" alt="Wadaws" width="50" height="50">
+                            </marquee>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.col -->
             </div>
