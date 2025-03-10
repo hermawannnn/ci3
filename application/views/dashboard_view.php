@@ -26,8 +26,11 @@
                         <!-- /.card-header -->
                         <div class="card-header">
                             <h3 class="card-title"><strong></strong></h3>
-                            <img src="https://media.tenor.com/yCFHzEvKa9MAAAAi/hello.gif" alt="Hello" width="100" height="100">
-                            <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?></span>
+                            <div style="text-align: center;">
+                                <img src="https://media.tenor.com/yCFHzEvKa9MAAAAi/hello.gif" alt="Hello" width="100" height="100">
+                                <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?>, Tetap Semangar Yaw!</span>
+                                <img src="https://media.tenor.com/-MlEF7aRcA0AAAAi/tkthao219-quby.gif" alt="Quby" width="100" height="100">
+                            </div>
                         </div>
                     </div>
 

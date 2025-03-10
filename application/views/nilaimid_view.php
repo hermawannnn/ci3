@@ -109,9 +109,9 @@
                         row.innerHTML = `
                             <td>${index + 1}</td>
                             <td>${siswa.nama}</td>
-                            <td><input type="number" class="form-control" name="nilai_pt[${siswa.id}]" max="100" required></td>
-                            <td><input type="number" class="form-control" name="nilai_mt[${siswa.id}]" max="100" required></td>
-                            <td><span id="nilai_akhir_${siswa.id}"></span></td>
+                            <td><input type="number" class="form-control" name="nilai_pt[${siswa.id}]" value="0" max="100" required></td>
+                            <td><input type="number" class="form-control" name="nilai_mt[${siswa.id}]" value="0" max="100" required></td>
+                            <td><span id="nilai_akhir_${siswa.id}">0.00</span></td>
                         `;
                         tableBody.appendChild(row); // Menambahkan baris ke tabel
                     });
@@ -147,8 +147,8 @@
                         row.innerHTML = `
                             <td>${index + 1}</td>
                             <td>${n.nama_siswa}</td>
-                            <td><input type="number" class="form-control" name="nilai_pt[${n.siswa_id}]" value="${n.nilai_pt || 0}" max="100" required></td>
-                            <td><input type="number" class="form-control" name="nilai_mt[${n.siswa_id}]" value="${n.nilai_mt || 0}" max="100" required></td>
+                            <td><input type="number" class="form-control" name="nilai_pt[${n.siswa_id}]" value="${n.nilai_pt !== null ? n.nilai_pt : 0}" max="100" required></td>
+                            <td><input type="number" class="form-control" name="nilai_mt[${n.siswa_id}]" value="${n.nilai_mt !== null ? n.nilai_mt : 0}" max="100" required></td>
                             <td class="text-center font-weight-bold">${nilai_akhir.toFixed(2)}</td>
                         `;
                         tableBody.appendChild(row); // Menambahkan baris ke tabel

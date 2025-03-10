@@ -80,7 +80,14 @@
 <script>
     document.getElementById('filter_kelas_id').addEventListener('change', function() {
         var kelas_id = this.value;
+        // Simpan kelas_id ke localStorage
+        localStorage.setItem('selected_kelas_id', kelas_id);
         document.getElementById('kelas_id_hidden').value = kelas_id;
+        loadSiswa(kelas_id);
+    });
+
+    // Fungsi untuk load siswa
+    function loadSiswa(kelas_id) {
         if (kelas_id) {
             fetch('<?php echo site_url('nilai/get_siswa_by_kelas/'); ?>' + kelas_id)
                 .then(response => response.json())
@@ -101,6 +108,16 @@
                     });
                 });
         }
+    }
+
+    // Tambahkan script untuk mengecek localStorage saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedKelasId = localStorage.getItem('selected_kelas_id');
+        if (savedKelasId) {
+            var selectElement = document.getElementById('filter_kelas_id');
+            selectElement.value = savedKelasId;
+            loadSiswa(savedKelasId);
+        }
     });
 
     function printRapor(siswaId) {
@@ -109,7 +126,6 @@
 
     function saveRaporToPdf(siswaId) {
         window.open('<?php echo site_url('rapormid/save_rapor_pdf/'); ?>' + siswaId, '_blank');
-        // window.location.href = '<?php echo site_url('rapormid/save_rapor_pdf/'); ?>' + siswaId;
     }
 </script>
 </body>

@@ -46,11 +46,32 @@
         <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Role: <b><?php echo $this->session->userdata('role'); ?></b></a>
         </li> -->
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
           <marquee behavior="scroll" direction="right">CEPETAAANNN
             <img src="https://media.tenor.com/h5b-nbmzlT8AAAAi/pepeeee.gif" alt="Wadaws" width="20" height="20">
           </marquee>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link" style="color: blue;">Role: <b><?php echo $this->session->userdata('role'); ?></b></a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">
+            <span id="jam"></span>
+          </a>
+        </li>
+        <script>
+          function updateClock() {
+            const now = new Date();
+            const jam = now.toLocaleTimeString('en-US', {
+              hour12: false
+            });
+            document.getElementById('jam').innerHTML = jam;
+          }
+          setInterval(updateClock, 1000);
+          updateClock();
+        </script>
       </ul>
     </nav>
     <!-- /.navbar -->
