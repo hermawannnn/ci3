@@ -96,6 +96,7 @@
                                         <th>Unit</th>
                                         <th>Kelas</th>
                                         <th>User</th>
+                                        <th>Username</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -137,6 +138,16 @@
                                                 ?>
                                             </td>
                                             <td>
+                                                <?php
+                                                foreach ($users as $user) {
+                                                    if ($user->id == $row['user_id']) {
+                                                        echo $user->username;
+                                                        break;
+                                                    }
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
                                                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit-<?php echo $row['id']; ?>">Edit</a>
                                                 <a href="<?php echo site_url('pembelajaran/hapus/' . $row['id']); ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?');">Hapus</a>
                                             </td>
@@ -149,6 +160,7 @@
                                         <th>Kelas</th>
                                         <th>Unit</th>
                                         <th>User</th>
+                                        <th>Username</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>

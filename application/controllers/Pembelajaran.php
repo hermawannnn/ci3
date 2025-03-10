@@ -30,7 +30,7 @@ class Pembelajaran extends CI_Controller
         $data['pelajaran'] = $this->Pelajaran_model->get_all();
 
         // echo '<pre>';
-        // print_r($data['pelajaran']);
+        // print_r($data['users']);
         // echo '</pre>';
 
         // Menampilkan halaman kelas dengan data

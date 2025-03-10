@@ -25,6 +25,15 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-header">
+                            <h3 class="card-title"><strong></strong></h3>
+                            <img src="https://media.tenor.com/yCFHzEvKa9MAAAAi/hello.gif" alt="Hello" width="100" height="100">
+                            <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?></span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-header">
                             <h3 class="card-title"><strong>Informasi Data Mengajar</strong></h3>
                         </div>
 
