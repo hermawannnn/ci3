@@ -28,7 +28,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="<?php echo site_url('user/edit/'.$user->id); ?>" method="post">
+                            <form action="<?php echo site_url('user/edit/' . $user->id); ?>" method="post">
                                 <input type="hidden" name="id" value="<?php echo $user->id; ?>">
                                 <div class="form-group">
                                     <label for="username">Username</label>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+                                    <input type="password" class="form-control" id="password" name="password" value="hermawanganteng">
                                 </div>
                                 <div class="form-group">
                                     <label for="role">Role</label>
