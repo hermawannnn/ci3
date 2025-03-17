@@ -70,6 +70,15 @@
         .text-center {
             text-align: center;
         }
+
+        body {
+            background-image: url('<?php echo base_url() ?>aset/dist/img/raporback.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 70%;
+            background-blend-mode: lighten;
+        }
     </style>
 </head>
 

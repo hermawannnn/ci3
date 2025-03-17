@@ -30,7 +30,7 @@
                                     <h3 class="card-title"><strong></strong></h3>
                                     <div style="text-align: center;">
                                         <img src="https://media.tenor.com/yCFHzEvKa9MAAAAi/hello.gif" alt="Hello" width="100" height="100">
-                                        <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?>, Tetap Semangar Yaw!</span>
+                                        <span style="font-size: 25px;"><?php echo $this->session->userdata('nama'); ?>, Tetap Semangat Yaw!</span>
                                         <img src="https://media.tenor.com/-MlEF7aRcA0AAAAi/tkthao219-quby.gif" alt="Quby" width="100" height="100">
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                 <div class="card-body">
                                     <ul>
                                         <li>Secara Default Nilai terisi dengan nilai 0, silahkan isi nilai dengan benar</li>
-                                        <li>Periksa Kemabli Nilai yang sudah di masukan, karna kemarin masih random nilainya</li>
+                                        <li>Periksa Kembali Nilai yang sudah di masukan, karna kemarin masih random nilainya</li>
                                         <li>Untuk admin bisa dapat di tanyakan ke Ahmad Irfan Fauzi, Hermawan, Andriansyah, dan Fauzi Supandi</li>
                                     </ul>
                                 </div>
