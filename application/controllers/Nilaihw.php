@@ -40,10 +40,10 @@ class Nilaihw extends CI_Controller
         print_r($data);
         echo '</pre>';
 
-        // $this->load->view('template/header');
-        // $this->load->view('template/sidebar');
-        // $this->load->view('nilaihw_view', $data);
-        // $this->load->view('template/footer');
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar');
+        $this->load->view('nilaihw_view', $data);
+        $this->load->view('template/footer');
     }
 
     public function get_siswa_by_kelas($kelas_id)

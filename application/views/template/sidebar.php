@@ -126,35 +126,35 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('raportahunan'); ?>"
+                <a href="<?php echo site_url('#'); ?>"
                   class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Nilai HW</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('raportahunan'); ?>"
+                <a href="<?php echo site_url('#'); ?>"
                   class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Nilai EX</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('raportahunan'); ?>"
+                <a href="<?php echo site_url('#'); ?>"
                   class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Nilai FT</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('nilaideskripsitahunan'); ?>"
+                <a href="<?php echo site_url('#'); ?>"
                   class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsitahunan') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Input Nilai Deskripsi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('nilaideskripsitahunan'); ?>"
+                <a href="<?php echo site_url('#'); ?>"
                   class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsitahunan') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Rapor Akhir Semester</p>
