@@ -116,7 +116,7 @@
           </li>
 
           <!-- Nilai Akhir Semester -->
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'raportahunan' || $this->uri->segment(1) == 'nilaideskripsitahunan') ? 'menu-open' : ''; ?>">
+          <!-- <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'raportahunan' || $this->uri->segment(1) == 'nilaideskripsitahunan') ? 'menu-open' : ''; ?>">
             <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan' || $this->uri->segment(1) == 'nilaideskripsitahunan') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -161,7 +161,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
 
         <?php endif; ?>
         <!-- Logout -->

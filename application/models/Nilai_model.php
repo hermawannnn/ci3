@@ -33,6 +33,7 @@ class Nilai_model extends CI_Model
         $this->db->from('siswa');
         $this->db->join('nilaimid', 'siswa.id = nilaimid.siswa_id AND nilaimid.pelajaran_id = ' . (int)$pelajaran_id, 'left');
         $this->db->where('siswa.kelas_id', $kelas_id);
+        $this->db->order_by('siswa.nama', 'ASC');
         if ($siswa_id) {
             $this->db->where('siswa.id', $siswa_id);
             $query = $this->db->get();

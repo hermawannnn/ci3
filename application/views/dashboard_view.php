@@ -23,6 +23,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div style="text-align: center;">
+                                    <h2>Siapa yang mau Jadi ADMIN lagi buat nge cek Nilai?</h2>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-6">
                             <div class="card">
                                 <!-- /.card-header -->

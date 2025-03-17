@@ -101,7 +101,7 @@
                                 <td>${siswa.nama}</td>
                                 <td>
                                     <button class="btn btn-secondary" onclick="printRapor(${siswa.id})">Print</button>
-                                    <button class="btn btn-primary" onclick="saveRaporToPdf(${siswa.id})">Save to PDF</button>
+                                    
                                 </td>
                             `;
                         tableBody.appendChild(row);
@@ -109,6 +109,8 @@
                 });
         }
     }
+
+    // <button class="btn btn-primary" onclick="saveRaporToPdf(${siswa.id})">Save to PDF</button>
 
     // Tambahkan script untuk mengecek localStorage saat halaman dimuat
     document.addEventListener('DOMContentLoaded', function() {

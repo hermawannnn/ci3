@@ -227,9 +227,9 @@
 
     <table style="width: 100%; margin-top: 20px; border: none;">
         <tr style="text-align: center;">
-            <td style="width: 33.33%; border: none;">Parent Signature</td>
-            <td style="width: 33.33%; border: none;">Principal Signature</td>
-            <td style="width: 33.33%; border: none;">Teacher Signature</td>
+            <td style="width: 33.33%; border: none;">Parent's Signature</td>
+            <td style="width: 33.33%; border: none;">Principal's Signature</td>
+            <td style="width: 33.33%; border: none;">Teacher's Signature</td>
         </tr>
         <tr>
             <td style="padding: 40px; border: none;">&nbsp;</td>
