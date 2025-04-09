@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Nilai extends CI_Controller
+class Nilaimid extends CI_Controller
 {
 
     public function __construct()
@@ -35,7 +35,7 @@ class Nilai extends CI_Controller
             $data['pelajaran'] = $this->Pelajaran_model->get_all_pelajaran();
         }
 
-        $data['nilai'] = $this->Nilai_model->get_all_nilai();
+        $data['nilaimid'] = $this->Nilai_model->get_all_nilai();
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
         $this->load->view('nilaimid_view', $data);
@@ -44,8 +44,8 @@ class Nilai extends CI_Controller
 
     public function view($id)
     {
-        $data['nilai'] = $this->Nilai_model->get_nilai_by_id($id);
-        if (empty($data['nilai'])) {
+        $data['nilaimid'] = $this->Nilai_model->get_nilai_by_id($id);
+        if (empty($data['nilaimid'])) {
             show_404();
         }
         $this->load->view('nilaimid_view', $data);
@@ -81,7 +81,7 @@ class Nilai extends CI_Controller
             }
         }
 
-        redirect('nilai');
+        redirect('nilaimid');
     }
 
     public function update($id)
@@ -92,7 +92,7 @@ class Nilai extends CI_Controller
     public function delete($id)
     {
         $this->Nilai_model->delete_nilai($id);
-        redirect('nilai');
+        redirect('nilaimid');
     }
 
     public function get_siswa_by_kelas($kelas_id)
@@ -105,14 +105,14 @@ class Nilai extends CI_Controller
     public function get_nilai_by_kelas($kelas_id)
     {
         $this->load->model('Nilai_model');
-        $nilai = $this->Nilai_model->get_nilai_by_kelas($kelas_id);
-        echo json_encode($nilai);
+        $nilaimid = $this->Nilai_model->get_nilai_by_kelas($kelas_id);
+        echo json_encode($nilaimid);
     }
 
     public function get_nilai_by_kelas_and_pelajaran($kelas_id, $pelajaran_id)
     {
         $this->load->model('Nilai_model');
-        $nilai = $this->Nilai_model->get_nilai_by_kelas_and_pelajaran($kelas_id, $pelajaran_id);
-        echo json_encode($nilai);
+        $nilaimid = $this->Nilai_model->get_nilai_by_kelas_and_pelajaran($kelas_id, $pelajaran_id);
+        echo json_encode($nilaimid);
     }
 }

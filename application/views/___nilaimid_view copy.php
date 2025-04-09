@@ -118,8 +118,8 @@
                                 var row = '<tr>' +
                                     '<td>' + rowNumber + '</td>' +
                                     '<td>' + siswa.nama + '</td>' +
-                                    '<td><input type="number" class="form-control nilai-pt" name="nilai_pt[' + siswa.id + ']" value="' + nilaiPt + '" min="0" max="100"></td>' +
-                                    '<td><input type="number" class="form-control nilai-mt" name="nilai_mt[' + siswa.id + ']" value="' + nilaiMt + '" min="0" max="100"></td>' +
+                                    '<td><input type="number" class="form-control nilaimid-pt" name="nilai_pt[' + siswa.id + ']" value="' + nilaiPt + '" min="0" max="100"></td>' +
+                                    '<td><input type="number" class="form-control nilaimid-mt" name="nilai_mt[' + siswa.id + ']" value="' + nilaiMt + '" min="0" max="100"></td>' +
                                     '</tr>';
                                 tableBody.append(row);
                                 rowNumber++;
@@ -144,7 +144,7 @@
 
         // Validate input on form submit
         $('#nilaiForm').submit(function(event) {
-            $('.nilai-pt, .nilai-mt').each(function() {
+            $('.nilaimid-pt, .nilaimid-mt').each(function() {
                 var value = $(this).val();
                 if (value < 0 || value > 100) {
                     alert('Nilai harus berada di antara 0 dan 100.');

@@ -37,18 +37,18 @@ class Raport extends CI_Controller
         foreach ($nilai_pt as $siswa_id => $pt) {
             $mt = $nilai_mt[$siswa_id];
 
-            // Check if nilai already exists
+            // Check if nilaimid already exists
             $existing_nilai = $this->Raport_model->get_existing_nilai($kelas_id, $pelajaran_id, $siswa_id);
 
             if ($existing_nilai) {
-                // Update existing nilai
+                // Update existing nilaimid
                 $data = array(
                     'nilai_pt' => $pt,
                     'nilai_mt' => $mt
                 );
                 $this->Raport_model->update_nilai($kelas_id, $pelajaran_id, $siswa_id, $data);
             } else {
-                // Insert new nilai
+                // Insert new nilaimid
                 $data = array(
                     'kelas_id' => $kelas_id,
                     'pelajaran_id' => $pelajaran_id,
@@ -69,8 +69,8 @@ class Raport extends CI_Controller
         $pelajaran_id = $this->input->post('pelajaran_id');
         $siswa_id = $this->input->post('siswa_id');
 
-        $nilai = $this->Raport_model->get_existing_nilai($kelas_id, $pelajaran_id, $siswa_id);
+        $nilaimid = $this->Raport_model->get_existing_nilai($kelas_id, $pelajaran_id, $siswa_id);
 
-        echo json_encode($nilai);
+        echo json_encode($nilaimid);
     }
 }

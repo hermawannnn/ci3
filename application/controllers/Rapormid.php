@@ -21,7 +21,7 @@ class Rapormid extends CI_Controller
         // Metode default
         // $data['rapormid'] = $this->Rapormid_model->get_all();
         $data['siswa'] = $this->Siswa_model->get_all();
-        $data['nilai'] = $this->Nilai_model->get_all_nilai();
+        $data['nilaimid'] = $this->Nilai_model->get_all_nilai();
         $data['kelas'] = $this->Kelas_model->get_all_kelas();
 
         // echo '<pre>';
@@ -158,17 +158,17 @@ class Rapormid extends CI_Controller
 
         $no = 1;
         foreach ($subjects as $subject) {
-            $nilai = '-';
+            $nilaimid = '-';
             foreach ($nilai_mid as $n) {
                 if ($n['pelajaran_id'] == $subject['id']) {
-                    $nilai = number_format(($n['nilai_pt'] + $n['nilai_mt']) / 2, 2);
+                    $nilaimid = number_format(($n['nilai_pt'] + $n['nilai_mt']) / 2, 2);
                     break;
                 }
             }
             $html .= '<tr>
                 <td style="text-align: center;">' . $no++ . '</td>
                 <td style="text-align: left;">' . $subject['name'] . '</td>
-                <td style="text-align: center;">' . $nilai . '</td>
+                <td style="text-align: center;">' . $nilaimid . '</td>
                 <td style="text-align: center;">' . number_format($subject['rataKelas']['nilai_pt'], 2) . '</td>
             </tr>';
         }
@@ -185,17 +185,17 @@ class Rapormid extends CI_Controller
 
         $no = 1;
         foreach ($islamic_subjects as $subject) {
-            $nilai = '-';
+            $nilaimid = '-';
             foreach ($nilai_mid as $n) {
                 if ($n['pelajaran_id'] == $subject['id']) {
-                    $nilai = number_format(($n['nilai_pt'] + $n['nilai_mt']) / 2, 2);
+                    $nilaimid = number_format(($n['nilai_pt'] + $n['nilai_mt']) / 2, 2);
                     break;
                 }
             }
             $html .= '<tr>
                 <td style="text-align: center;">' . $no++ . '</td>
                 <td style="text-align: left;">' . $subject['name'] . '</td>
-                <td style="text-align: center;">' . $nilai . '</td>
+                <td style="text-align: center;">' . $nilaimid . '</td>
                 <td style="text-align: center;">' . number_format($subject['rataKelas']['nilai_pt'], 2) . '</td>
             </tr>';
         }
@@ -246,7 +246,7 @@ class Rapormid extends CI_Controller
         $siswa_id = $this->input->post('siswa_id');
 
         // Example of how to call the method properly:
-        $data['nilai'] = $this->rapormid_model->ambilnilai($siswa_id, $kelas_id, $pelajaran_id);
+        $data['nilaimid'] = $this->rapormid_model->ambilnilai($siswa_id, $kelas_id, $pelajaran_id);
 
         // Process the data (e.g., save to the database)
         // For now, just print the values

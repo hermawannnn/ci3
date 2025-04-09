@@ -80,8 +80,8 @@
         <!-- Teacher Menu Items -->
         <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('role') == 'guru'): ?>
           <!-- Nilai Mid Test -->
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'menu-open' : ''; ?>">
-            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'nilai' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
+          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilaimid' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'menu-open' : ''; ?>">
+            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'nilaimid' || $this->uri->segment(1) == 'rapormid' || $this->uri->segment(1) == 'nilaideskripsimid') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Nilai Tengah Semester
@@ -90,8 +90,8 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('nilai'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilai') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('nilaimid'); ?>"
+                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilaimid') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Input NTS</p>
                 </a>
@@ -115,9 +115,9 @@
             </ul>
           </li>
 
-          <!-- Nilai Akhir Semester -->
-          <!-- <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'raportahunan' || $this->uri->segment(1) == 'nilaideskripsitahunan') ? 'menu-open' : ''; ?>">
-            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan' || $this->uri->segment(1) == 'nilaideskripsitahunan') ? 'active' : ''; ?>">
+          <!-- Nilai UAS -->
+          <li class="nav-item has-treeview <?php echo ($this->uri->segment(1) == 'nilaifinal' || $this->uri->segment(1) == 'raporfinal' || $this->uri->segment(1) == 'nilaideskripsifinal') ? 'menu-open' : ''; ?>">
+            <a href="#" class="nav-link <?php echo ($this->uri->segment(1) == 'nilaifinal' || $this->uri->segment(1) == 'raporfinal' || $this->uri->segment(1) == 'nilaideskripsifinal') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Nilai Akhir Semester
@@ -126,42 +126,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('#'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan') ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('nilaifinal'); ?>"
+                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilaifinal') ? 'active' : ''; ?>">
                   <i class="nav-icon far fa-circle"></i>
-                  <p>Nilai HW</p>
+                  <p>Input NAS</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('#'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan') ? 'active' : ''; ?>">
-                  <i class="nav-icon far fa-circle"></i>
-                  <p>Nilai EX</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('#'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'raportahunan') ? 'active' : ''; ?>">
-                  <i class="nav-icon far fa-circle"></i>
-                  <p>Nilai FT</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('#'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsitahunan') ? 'active' : ''; ?>">
-                  <i class="nav-icon far fa-circle"></i>
-                  <p>Input Nilai Deskripsi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('#'); ?>"
-                  class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsitahunan') ? 'active' : ''; ?>">
-                  <i class="nav-icon far fa-circle"></i>
-                  <p>Rapor Akhir Semester</p>
-                </a>
-              </li>
+              <?php if ($this->session->userdata('role') == 'admin' || is_wali_kelas($this->session->userdata('id'))): ?>
+                <li class="nav-item">
+                  <a href="<?php echo site_url('nilaideskripsifinal'); ?>"
+                    class="nav-link <?php echo ($this->uri->segment(1) == 'nilaideskripsifinal') ? 'active' : ''; ?>">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Input Nilai Deskripsi</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?php echo site_url('raporfinal'); ?>"
+                    class="nav-link <?php echo ($this->uri->segment(1) == 'raporfinal') ? 'active' : ''; ?>">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Rapor Akhir Semester</p>
+                  </a>
+                </li>
+              <?php endif; ?>
             </ul>
-          </li> -->
+          </li>
+
 
         <?php endif; ?>
         <!-- Logout -->

@@ -79,14 +79,14 @@
 <script>
     // Menambahkan event listener untuk perubahan pada elemen dengan id 'filter_kelas_id'
     document.getElementById('filter_kelas_id').addEventListener('change', function() {
-        var kelas_id = this.value; // Mendapatkan nilai dari elemen yang berubah
-        document.getElementById('kelas_id_hidden').value = kelas_id; // Menyimpan nilai kelas_id ke elemen tersembunyi
-        if (kelas_id) { // Jika kelas_id memiliki nilai
+        var kelas_id = this.value; // Mendapatkan nilaimid dari elemen yang berubah
+        document.getElementById('kelas_id_hidden').value = kelas_id; // Menyimpan nilaimid kelas_id ke elemen tersembunyi
+        if (kelas_id) { // Jika kelas_id memiliki nilaimid
             // Melakukan fetch data siswa berdasarkan kelas_id
             fetch('<?php echo site_url('nilaideskripsimid/get_nilaidesk_by_kelas/'); ?>' + kelas_id)
                 .then(response => response.json()) // Mengubah response menjadi JSON
                 .then(data => {
-                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilai
+                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilaimid
                     tableBody.innerHTML = ''; // Mengosongkan isi tabel
                     data.forEach(function(siswa, index) { // Iterasi melalui data siswa
                         var row = document.createElement('tr'); // Membuat elemen baris tabel
@@ -99,8 +99,8 @@
                         tableBody.appendChild(row); // Menambahkan baris ke tabel
                     });
                 });
-        } else { // Jika kelas_id tidak memiliki nilai
-            document.getElementById('nilaideskripsi_form').style.display = 'none'; // Menyembunyikan form nilai
+        } else { // Jika kelas_id tidak memiliki nilaimid
+            document.getElementById('nilaideskripsi_form').style.display = 'none'; // Menyembunyikan form nilaimid
             // Mengosongkan isi tabel jika tidak ada kelas yang dipilih
             document.getElementById('nilai_table_body').innerHTML = '';
         }

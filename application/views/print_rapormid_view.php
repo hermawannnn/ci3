@@ -128,9 +128,9 @@
                 <td>1</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[0]['nama_pelajaran']) ? $pelajaran[0]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
-                    foreach ($nilai_mid as $nilai) {
-                        if ($nilai['pelajaran_id'] == 3) {
-                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                    foreach ($nilai_mid as $nilaimid) {
+                        if ($nilaimid['pelajaran_id'] == 3) {
+                            echo number_format(($nilaimid['nilai_pt'] + $nilaimid['nilai_mt']) / 2, 2);
                             break;
                         }
                     }
@@ -141,9 +141,9 @@
                 <td>2</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[1]['nama_pelajaran']) ? $pelajaran[1]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
-                    foreach ($nilai_mid as $nilai) {
-                        if ($nilai['pelajaran_id'] == 4) {
-                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                    foreach ($nilai_mid as $nilaimid) {
+                        if ($nilaimid['pelajaran_id'] == 4) {
+                            echo number_format(($nilaimid['nilai_pt'] + $nilaimid['nilai_mt']) / 2, 2);
                             break;
                         }
                     }
@@ -154,9 +154,9 @@
                 <td>3</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[2]['nama_pelajaran']) ? $pelajaran[2]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
-                    foreach ($nilai_mid as $nilai) {
-                        if ($nilai['pelajaran_id'] == 5) {
-                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                    foreach ($nilai_mid as $nilaimid) {
+                        if ($nilaimid['pelajaran_id'] == 5) {
+                            echo number_format(($nilaimid['nilai_pt'] + $nilaimid['nilai_mt']) / 2, 2);
                             break;
                         }
                     }
@@ -167,9 +167,9 @@
                 <td>4</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[3]['nama_pelajaran']) ? $pelajaran[3]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
-                    foreach ($nilai_mid as $nilai) {
-                        if ($nilai['pelajaran_id'] == 6) {
-                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                    foreach ($nilai_mid as $nilaimid) {
+                        if ($nilaimid['pelajaran_id'] == 6) {
+                            echo number_format(($nilaimid['nilai_pt'] + $nilaimid['nilai_mt']) / 2, 2);
                             break;
                         }
                     }
@@ -183,9 +183,9 @@
                 <td>1</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[5]['nama_pelajaran']) ? $pelajaran[5]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
-                    foreach ($nilai_mid as $nilai) {
-                        if ($nilai['pelajaran_id'] == 10) {
-                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                    foreach ($nilai_mid as $nilaimid) {
+                        if ($nilaimid['pelajaran_id'] == 10) {
+                            echo number_format(($nilaimid['nilai_pt'] + $nilaimid['nilai_mt']) / 2, 2);
                             break;
                         }
                     }
@@ -196,9 +196,9 @@
                 <td>2</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[4]['nama_pelajaran']) ? $pelajaran[4]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
-                    foreach ($nilai_mid as $nilai) {
-                        if ($nilai['pelajaran_id'] == 8) {
-                            echo number_format(($nilai['nilai_pt'] + $nilai['nilai_mt']) / 2, 2);
+                    foreach ($nilai_mid as $nilaimid) {
+                        if ($nilaimid['pelajaran_id'] == 8) {
+                            echo number_format(($nilaimid['nilai_pt'] + $nilaimid['nilai_mt']) / 2, 2);
                             break;
                         }
                     }

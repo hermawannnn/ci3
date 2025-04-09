@@ -48,18 +48,6 @@ INSERT INTO `kelas` (`id`, `nama_kelas`, `unit`, `wali_kelas`) VALUES
 	(12, '6A', 1, 34),
 	(13, '6B', 1, 42);
 
--- Dumping structure for table ci4.nilaideskripsifinal
-CREATE TABLE IF NOT EXISTS `nilaideskripsifinal` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `siswa_id` int DEFAULT NULL,
-  `deskripsi` text,
-  PRIMARY KEY (`id`),
-  KEY `FK_nilaideskripsifinal_siswa` (`siswa_id`),
-  CONSTRAINT `FK_nilaideskripsifinal_siswa` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table ci4.nilaideskripsifinal: ~0 rows (approximately)
-
 -- Dumping structure for table ci4.nilaideskripsimid
 CREATE TABLE IF NOT EXISTS `nilaideskripsimid` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -335,81 +323,14 @@ INSERT INTO `nilaideskripsimid` (`id`, `siswa_id`, `deskripsi`) VALUES
 CREATE TABLE IF NOT EXISTS `nilaifinal` (
   `id` int NOT NULL AUTO_INCREMENT,
   `siswa_id` int NOT NULL,
-  `pelajaran_id` int DEFAULT NULL,
   `jenisnilai` enum('ex','hw','ft') NOT NULL,
   `nilai` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `siswa_id` (`siswa_id`),
-  KEY `FK_nilaifinal_pelajaran` (`pelajaran_id`),
-  CONSTRAINT `FK_nilaifinal_pelajaran` FOREIGN KEY (`pelajaran_id`) REFERENCES `pelajaran` (`id`),
   CONSTRAINT `nilaifinal_ibfk_1` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=736 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table ci4.nilaifinal: ~0 rows (approximately)
-INSERT INTO `nilaifinal` (`id`, `siswa_id`, `pelajaran_id`, `jenisnilai`, `nilai`) VALUES
-	(673, 12, 10, 'ex', 12.00),
-	(674, 13, 10, 'ex', 0.00),
-	(675, 14, 10, 'ex', 0.00),
-	(676, 15, 10, 'ex', 0.00),
-	(677, 16, 10, 'ex', 0.00),
-	(678, 17, 10, 'ex', 0.00),
-	(679, 18, 10, 'ex', 0.00),
-	(680, 19, 10, 'ex', 0.00),
-	(681, 20, 10, 'ex', 0.00),
-	(682, 21, 10, 'ex', 0.00),
-	(683, 22, 10, 'ex', 0.00),
-	(684, 23, 10, 'ex', 0.00),
-	(685, 24, 10, 'ex', 0.00),
-	(686, 25, 10, 'ex', 0.00),
-	(687, 26, 10, 'ex', 0.00),
-	(688, 27, 10, 'ex', 0.00),
-	(689, 28, 10, 'ex', 0.00),
-	(690, 29, 10, 'ex', 0.00),
-	(691, 30, 10, 'ex', 0.00),
-	(692, 31, 10, 'ex', 0.00),
-	(693, 32, 10, 'ex', 0.00),
-	(694, 12, 4, 'ft', 75.00),
-	(695, 13, 4, 'ft', 0.00),
-	(696, 14, 4, 'ft', 0.00),
-	(697, 15, 4, 'ft', 0.00),
-	(698, 16, 4, 'ft', 0.00),
-	(699, 17, 4, 'ft', 0.00),
-	(700, 18, 4, 'ft', 0.00),
-	(701, 19, 4, 'ft', 0.00),
-	(702, 20, 4, 'ft', 0.00),
-	(703, 21, 4, 'ft', 0.00),
-	(704, 22, 4, 'ft', 0.00),
-	(705, 23, 4, 'ft', 0.00),
-	(706, 24, 4, 'ft', 0.00),
-	(707, 25, 4, 'ft', 0.00),
-	(708, 26, 4, 'ft', 0.00),
-	(709, 27, 4, 'ft', 0.00),
-	(710, 28, 4, 'ft', 0.00),
-	(711, 29, 4, 'ft', 0.00),
-	(712, 30, 4, 'ft', 0.00),
-	(713, 31, 4, 'ft', 0.00),
-	(714, 32, 4, 'ft', 0.00),
-	(715, 12, 4, 'ex', 75.00),
-	(716, 13, 4, 'ex', 0.00),
-	(717, 14, 4, 'ex', 0.00),
-	(718, 15, 4, 'ex', 0.00),
-	(719, 16, 4, 'ex', 0.00),
-	(720, 17, 4, 'ex', 0.00),
-	(721, 18, 4, 'ex', 0.00),
-	(722, 19, 4, 'ex', 0.00),
-	(723, 20, 4, 'ex', 0.00),
-	(724, 21, 4, 'ex', 0.00),
-	(725, 22, 4, 'ex', 0.00),
-	(726, 23, 4, 'ex', 0.00),
-	(727, 24, 4, 'ex', 0.00),
-	(728, 25, 4, 'ex', 0.00),
-	(729, 26, 4, 'ex', 0.00),
-	(730, 27, 4, 'ex', 0.00),
-	(731, 28, 4, 'ex', 0.00),
-	(732, 29, 4, 'ex', 0.00),
-	(733, 30, 4, 'ex', 0.00),
-	(734, 31, 4, 'ex', 0.00),
-	(735, 32, 4, 'ex', 0.00);
 
 -- Dumping structure for table ci4.nilaimid
 CREATE TABLE IF NOT EXISTS `nilaimid` (
@@ -2440,23 +2361,6 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama`, `role`) VALUES
 	(51, 'zubaidah', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Zubaidah', 'guru'),
 	(52, 'ririn', '$2y$10$IE5anmK84FjLkBlBUrkWROgtrlFxPfqEmPsg5LPXo5pnPPOkV8IOS', 'Siti Nisrina, S.Pd', 'admin'),
 	(54, 'irfan', '$2y$10$JP8KJF954NP9nKz4O8QcRuIT1XIBEvaivAqGZlLIUFJZEaM1uNURW', 'Irfan', 'admin');
-
--- Dumping structure for trigger ci4.prevent_multiple_ft
-SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-DELIMITER //
-CREATE TRIGGER `prevent_multiple_ft` BEFORE INSERT ON `nilaifinal` FOR EACH ROW BEGIN
-    IF NEW.jenisnilai = 'ft' THEN
-        IF EXISTS (
-            SELECT 1 FROM nilaifinal 
-            WHERE siswa_id = NEW.siswa_id AND jenisnilai = 'ft'
-        ) THEN
-            SIGNAL SQLSTATE '45000' 
-            SET MESSAGE_TEXT = 'Setiap siswa hanya boleh memiliki satu nilaifinal ft.';
-        END IF;
-    END IF;
-END//
-DELIMITER ;
-SET SQL_MODE=@OLDTMP_SQL_MODE;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

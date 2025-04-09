@@ -34,8 +34,8 @@ class RaportController extends CI_Controller
         $siswa_id = $this->input->post('siswa_id');
         $pelajaran_id = 8; // Assuming pelajaran_id is fixed
 
-        $nilai = $this->Rapormidsemester_model->get_nilai($kelas_id, $siswa_id, $pelajaran_id);
-        echo json_encode($nilai);
+        $nilaimid = $this->Rapormidsemester_model->get_nilai($kelas_id, $siswa_id, $pelajaran_id);
+        echo json_encode($nilaimid);
     }
 
     public function save_nilai()

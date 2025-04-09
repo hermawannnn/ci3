@@ -49,8 +49,8 @@ class Raport extends CI_Controller
         $kelas_id = $this->input->post('kelas_id');
         $siswa_id = $this->input->post('siswa_id');
 
-        $nilai = $this->Rapormidsemester_model->get_nilai_by_kelas_siswa($kelas_id, $siswa_id);
+        $nilaimid = $this->Rapormidsemester_model->get_nilai_by_kelas_siswa($kelas_id, $siswa_id);
 
-        echo json_encode($nilai);
+        echo json_encode($nilaimid);
     }
 }

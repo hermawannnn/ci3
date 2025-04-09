@@ -89,7 +89,7 @@
     // Fungsi untuk load siswa
     function loadSiswa(kelas_id) {
         if (kelas_id) {
-            fetch('<?php echo site_url('nilai/get_siswa_by_kelas/'); ?>' + kelas_id)
+            fetch('<?php echo site_url('nilaimid/get_siswa_by_kelas/'); ?>' + kelas_id)
                 .then(response => response.json())
                 .then(data => {
                     var tableBody = document.getElementById('nilai_table_body');

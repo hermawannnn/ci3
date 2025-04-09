@@ -46,7 +46,7 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <form action="<?php echo site_url('nilai/create'); ?>" method="post" id="nilai_form" style="display: none;">
+                            <form action="<?php echo site_url('nilaimid/create'); ?>" method="post" id="nilai_form" style="display: none;">
                                 <input type="hidden" name="kelas_id" id="kelas_id_hidden">
                                 <input type="hidden" name="pelajaran_id" id="pelajaran_id_hidden">
                                 <table class="table table-bordered table-striped">
@@ -92,16 +92,16 @@
 <script>
     // Menambahkan event listener untuk perubahan pada elemen dengan id 'filter_kelas_id'
     document.getElementById('filter_kelas_id').addEventListener('change', function() {
-        var kelas_id = this.value; // Mendapatkan nilai dari elemen yang berubah
-        document.getElementById('kelas_id_hidden').value = kelas_id; // Menyimpan nilai kelas_id ke elemen tersembunyi
+        var kelas_id = this.value; // Mendapatkan nilaimid dari elemen yang berubah
+        document.getElementById('kelas_id_hidden').value = kelas_id; // Menyimpan nilaimid kelas_id ke elemen tersembunyi
         var pelajaranSelect = document.getElementById('filter_pelajaran_id'); // Mendapatkan elemen select pelajaran
-        if (kelas_id) { // Jika kelas_id memiliki nilai
+        if (kelas_id) { // Jika kelas_id memiliki nilaimid
             pelajaranSelect.disabled = false; // Mengaktifkan elemen select pelajaran
             // Melakukan fetch data siswa berdasarkan kelas_id
-            fetch('<?php echo site_url('nilai/get_siswa_by_kelas/'); ?>' + kelas_id)
+            fetch('<?php echo site_url('nilaimid/get_siswa_by_kelas/'); ?>' + kelas_id)
                 .then(response => response.json()) // Mengubah response menjadi JSON
                 .then(data => {
-                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilai
+                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilaimid
                     tableBody.innerHTML = ''; // Mengosongkan isi tabel
                     data.forEach(function(siswa, index) { // Iterasi melalui data siswa
                         var row = document.createElement('tr'); // Membuat elemen baris tabel
@@ -116,9 +116,9 @@
                         tableBody.appendChild(row); // Menambahkan baris ke tabel
                     });
                 });
-        } else { // Jika kelas_id tidak memiliki nilai
+        } else { // Jika kelas_id tidak memiliki nilaimid
             pelajaranSelect.disabled = true; // Menonaktifkan elemen select pelajaran
-            document.getElementById('nilai_form').style.display = 'none'; // Menyembunyikan form nilai
+            document.getElementById('nilai_form').style.display = 'none'; // Menyembunyikan form nilaimid
             // Mengosongkan isi tabel jika tidak ada kelas yang dipilih
             document.getElementById('nilai_table_body').innerHTML = '';
         }
@@ -126,24 +126,24 @@
 
     // Menambahkan event listener untuk perubahan pada elemen dengan id 'filter_pelajaran_id'
     document.getElementById('filter_pelajaran_id').addEventListener('change', function() {
-        var kelas_id = document.getElementById('filter_kelas_id').value; // Mendapatkan nilai kelas_id
-        var pelajaran_id = this.value; // Mendapatkan nilai dari elemen yang berubah
-        document.getElementById('pelajaran_id_hidden').value = pelajaran_id; // Menyimpan nilai pelajaran_id ke elemen tersembunyi
-        if (kelas_id && pelajaran_id) { // Jika kelas_id dan pelajaran_id memiliki nilai
-            // Melakukan fetch data nilai berdasarkan kelas_id dan pelajaran_id
-            fetch('<?php echo site_url('nilai/get_nilai_by_kelas_and_pelajaran/'); ?>' + kelas_id + '/' + pelajaran_id)
+        var kelas_id = document.getElementById('filter_kelas_id').value; // Mendapatkan nilaimid kelas_id
+        var pelajaran_id = this.value; // Mendapatkan nilaimid dari elemen yang berubah
+        document.getElementById('pelajaran_id_hidden').value = pelajaran_id; // Menyimpan nilaimid pelajaran_id ke elemen tersembunyi
+        if (kelas_id && pelajaran_id) { // Jika kelas_id dan pelajaran_id memiliki nilaimid
+            // Melakukan fetch data nilaimid berdasarkan kelas_id dan pelajaran_id
+            fetch('<?php echo site_url('nilaimid/get_nilai_by_kelas_and_pelajaran/'); ?>' + kelas_id + '/' + pelajaran_id)
                 .then(response => response.json()) // Mengubah response menjadi JSON
                 .then(data => {
-                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilai
+                    var tableBody = document.getElementById('nilai_table_body'); // Mendapatkan elemen tbody dari tabel nilaimid
                     tableBody.innerHTML = ''; // Mengosongkan isi tabel
-                    data.forEach(function(n, index) { // Iterasi melalui data nilai
+                    data.forEach(function(n, index) { // Iterasi melalui data nilaimid
 
-                        var a = parseFloat(n.nilai_pt) || 0; // Mendapatkan nilai PT atau 0 jika null
-                        var b = parseFloat(n.nilai_mt) || 0; // Mendapatkan nilai MT atau 0 jika null
-                        var nilai_akhir = (a + b) / 2; // Menghitung nilai akhir
+                        var a = parseFloat(n.nilai_pt) || 0; // Mendapatkan nilaimid PT atau 0 jika null
+                        var b = parseFloat(n.nilai_mt) || 0; // Mendapatkan nilaimid MT atau 0 jika null
+                        var nilai_akhir = (a + b) / 2; // Menghitung nilaimid akhir
 
                         var row = document.createElement('tr'); // Membuat elemen baris tabel
-                        // Menambahkan isi baris tabel dengan data nilai
+                        // Menambahkan isi baris tabel dengan data nilaimid
                         row.innerHTML = `
                             <td>${index + 1}</td>
                             <td>${n.nama_siswa}</td>
@@ -153,10 +153,10 @@
                         `;
                         tableBody.appendChild(row); // Menambahkan baris ke tabel
                     });
-                    document.getElementById('nilai_form').style.display = 'block'; // Menampilkan form nilai
+                    document.getElementById('nilai_form').style.display = 'block'; // Menampilkan form nilaimid
                 });
-        } else { // Jika kelas_id atau pelajaran_id tidak memiliki nilai
-            document.getElementById('nilai_form').style.display = 'none'; // Menyembunyikan form nilai
+        } else { // Jika kelas_id atau pelajaran_id tidak memiliki nilaimid
+            document.getElementById('nilai_form').style.display = 'none'; // Menyembunyikan form nilaimid
         }
     });
 </script>
