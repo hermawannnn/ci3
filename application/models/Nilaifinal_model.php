@@ -11,6 +11,10 @@ class Nilaifinal_model extends CI_Model
 
     public function get_kelas()
     {
+        if ($this->session->userdata('role') === 'admin') {
+            return $this->db->get('kelas')->result_array();
+        }
+
         return $this->db->select('k.*')
             ->from('pembelajaran pb')
             ->join('kelas k', 'k.id = pb.kelas_id')
@@ -22,6 +26,10 @@ class Nilaifinal_model extends CI_Model
 
     public function get_pelajaran()
     {
+        if ($this->session->userdata('role') === 'admin') {
+            return $this->db->get('pelajaran')->result_array();
+        }
+
         return $this->db->select('p.*')
             ->from('pembelajaran pb')
             ->join('pelajaran p', 'p.id = pb.pelajaran_id')

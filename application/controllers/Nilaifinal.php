@@ -6,18 +6,18 @@ class Nilaifinal extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->userdata('logged_in')) {
+            redirect('auth');
+        }
         $this->load->helper('url');
         $this->load->model('Nilaifinal_model');
     }
 
     public function index()
     {
-        if (!$this->session->userdata('logged_in')) {
-            redirect('auth');
-        }
-
         $data['kelas'] = $this->Nilaifinal_model->get_kelas();
         $data['pelajaran'] = $this->Nilaifinal_model->get_pelajaran();
+        $data['is_admin'] = ($this->session->userdata('role') === 'admin');
 
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
