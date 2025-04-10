@@ -42,6 +42,7 @@ class Nilaifinal_model extends CI_Model
     public function get_siswa_by_kelas($kelas_id)
     {
         return $this->db->where('kelas_id', $kelas_id)
+            ->order_by('nama', 'asc')
             ->get('siswa')
             ->result_array();
     }

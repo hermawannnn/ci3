@@ -73,4 +73,15 @@ class Kelas_model extends CI_Model
             return null;
         }
     }
+
+    public function get_kelas_by_user($user_id, $role)
+    {
+        if ($role == 'admin') {
+            return $this->db->get('kelas')->result_array();
+        } else {
+            return $this->db->where('wali_kelas', $user_id)
+                           ->get('kelas')
+                           ->result_array();
+        }
+    }
 }

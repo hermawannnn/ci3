@@ -13,6 +13,7 @@ class Siswa_model extends CI_Model
         $this->db->select('siswa.*, kelas.nama_kelas');
         $this->db->from('siswa');
         $this->db->join('kelas', 'siswa.kelas_id = kelas.id', 'left');
+        // $this->db->order_by('siswa.nama', 'ASC');  // Added order by clause
         $query = $this->db->get();
         return $query->result_array();  // Changed from result()
     }
