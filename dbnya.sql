@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `nilaideskripsimid` (
   CONSTRAINT `FK_nilaimiddeskripsi_siswa` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=282 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table ci4.nilaideskripsimid: ~245 rows (approximately)
+-- Dumping data for table ci4.nilaideskripsimid: ~258 rows (approximately)
 INSERT INTO `nilaideskripsimid` (`id`, `siswa_id`, `deskripsi`) VALUES
 	(24, 12, 'Ailia is improving her ability to pay attention to directions. She is a very hard worker and has excellent vocabulary skills for her age. She enjoys reading and writing in English lesson. She is making progress in all academic areas. She sometimes rushes through assignments and makes careless mistakes. All the practicing she does at home and the encouragement she gets will help her in class.'),
 	(25, 13, 'Alex is a nice student in the morning. On the other hand, he needs to be reminded by the teacher to finish his schoolwork. He must continue to improve his work habits, as we mentioned in earlier meetings. We need to encourage him to take his work much more seriously. Moreover, he needs to be more focused when the teacher explains the materials.'),
@@ -343,73 +343,9 @@ CREATE TABLE IF NOT EXISTS `nilaifinal` (
   KEY `FK_nilaifinal_pelajaran` (`pelajaran_id`),
   CONSTRAINT `FK_nilaifinal_pelajaran` FOREIGN KEY (`pelajaran_id`) REFERENCES `pelajaran` (`id`),
   CONSTRAINT `nilaifinal_ibfk_1` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=736 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table ci4.nilaifinal: ~0 rows (approximately)
-INSERT INTO `nilaifinal` (`id`, `siswa_id`, `pelajaran_id`, `jenisnilai`, `nilai`) VALUES
-	(673, 12, 10, 'ex', 12.00),
-	(674, 13, 10, 'ex', 0.00),
-	(675, 14, 10, 'ex', 0.00),
-	(676, 15, 10, 'ex', 0.00),
-	(677, 16, 10, 'ex', 0.00),
-	(678, 17, 10, 'ex', 0.00),
-	(679, 18, 10, 'ex', 0.00),
-	(680, 19, 10, 'ex', 0.00),
-	(681, 20, 10, 'ex', 0.00),
-	(682, 21, 10, 'ex', 0.00),
-	(683, 22, 10, 'ex', 0.00),
-	(684, 23, 10, 'ex', 0.00),
-	(685, 24, 10, 'ex', 0.00),
-	(686, 25, 10, 'ex', 0.00),
-	(687, 26, 10, 'ex', 0.00),
-	(688, 27, 10, 'ex', 0.00),
-	(689, 28, 10, 'ex', 0.00),
-	(690, 29, 10, 'ex', 0.00),
-	(691, 30, 10, 'ex', 0.00),
-	(692, 31, 10, 'ex', 0.00),
-	(693, 32, 10, 'ex', 0.00),
-	(694, 12, 4, 'ft', 75.00),
-	(695, 13, 4, 'ft', 0.00),
-	(696, 14, 4, 'ft', 0.00),
-	(697, 15, 4, 'ft', 0.00),
-	(698, 16, 4, 'ft', 0.00),
-	(699, 17, 4, 'ft', 0.00),
-	(700, 18, 4, 'ft', 0.00),
-	(701, 19, 4, 'ft', 0.00),
-	(702, 20, 4, 'ft', 0.00),
-	(703, 21, 4, 'ft', 0.00),
-	(704, 22, 4, 'ft', 0.00),
-	(705, 23, 4, 'ft', 0.00),
-	(706, 24, 4, 'ft', 0.00),
-	(707, 25, 4, 'ft', 0.00),
-	(708, 26, 4, 'ft', 0.00),
-	(709, 27, 4, 'ft', 0.00),
-	(710, 28, 4, 'ft', 0.00),
-	(711, 29, 4, 'ft', 0.00),
-	(712, 30, 4, 'ft', 0.00),
-	(713, 31, 4, 'ft', 0.00),
-	(714, 32, 4, 'ft', 0.00),
-	(715, 12, 4, 'ex', 75.00),
-	(716, 13, 4, 'ex', 0.00),
-	(717, 14, 4, 'ex', 0.00),
-	(718, 15, 4, 'ex', 0.00),
-	(719, 16, 4, 'ex', 0.00),
-	(720, 17, 4, 'ex', 0.00),
-	(721, 18, 4, 'ex', 0.00),
-	(722, 19, 4, 'ex', 0.00),
-	(723, 20, 4, 'ex', 0.00),
-	(724, 21, 4, 'ex', 0.00),
-	(725, 22, 4, 'ex', 0.00),
-	(726, 23, 4, 'ex', 0.00),
-	(727, 24, 4, 'ex', 0.00),
-	(728, 25, 4, 'ex', 0.00),
-	(729, 26, 4, 'ex', 0.00),
-	(730, 27, 4, 'ex', 0.00),
-	(731, 28, 4, 'ex', 0.00),
-	(732, 29, 4, 'ex', 0.00),
-	(733, 30, 4, 'ex', 0.00),
-	(734, 31, 4, 'ex', 0.00),
-	(735, 32, 4, 'ex', 0.00);
+-- Dumping data for table ci4.nilaifinal: ~329 rows (approximately)
 
 -- Dumping structure for table ci4.nilaimid
 CREATE TABLE IF NOT EXISTS `nilaimid` (
@@ -2404,7 +2340,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama`, `role`) VALUES
 	(13, 'aliyahkhairani', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Aliyah Khairani, S.Pd', 'guru'),
 	(14, 'andriansyah', '$2y$10$K1SWmyiKz9CNmTm2J5fwJe/qxHGc0VtgIuXKB0x7x4R6hSklgUdVm', 'Andriansyah', 'admin'),
 	(15, 'anisilviah', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Ani Silviah, Lc', 'guru'),
-	(16, 'arsiskasari', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Arsiska Sari, S.S', 'guru'),
+	(16, 'arsiskasari', '$2y$10$xB5kmxyiKqyTYzYg1gd7JuBakA0ZeapepsN6/7xwIIA.5yLK82hgG', 'Arsiska Sari, S.S', 'guru'),
 	(17, 'astutipranowojati', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Astuti Pranowojati, S.Pd', 'guru'),
 	(18, 'azizahramdhaniaty', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Azizah Ramdhaniaty, S.Pd', 'guru'),
 	(19, 'cutriskaramazaniar', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Cut Riska Ramazaniar, S.Mat', 'guru'),
@@ -2440,23 +2376,6 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama`, `role`) VALUES
 	(51, 'zubaidah', '$2y$10$hxzdUREUWpbzICOtnbu7UOD6VJd4PFxmQ7YW5.C5lQdvKY/UbIkFS', 'Zubaidah', 'guru'),
 	(52, 'ririn', '$2y$10$IE5anmK84FjLkBlBUrkWROgtrlFxPfqEmPsg5LPXo5pnPPOkV8IOS', 'Siti Nisrina, S.Pd', 'admin'),
 	(54, 'irfan', '$2y$10$JP8KJF954NP9nKz4O8QcRuIT1XIBEvaivAqGZlLIUFJZEaM1uNURW', 'Irfan', 'admin');
-
--- Dumping structure for trigger ci4.prevent_multiple_ft
-SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-DELIMITER //
-CREATE TRIGGER `prevent_multiple_ft` BEFORE INSERT ON `nilaifinal` FOR EACH ROW BEGIN
-    IF NEW.jenisnilai = 'ft' THEN
-        IF EXISTS (
-            SELECT 1 FROM nilaifinal 
-            WHERE siswa_id = NEW.siswa_id AND jenisnilai = 'ft'
-        ) THEN
-            SIGNAL SQLSTATE '45000' 
-            SET MESSAGE_TEXT = 'Setiap siswa hanya boleh memiliki satu nilaifinal ft.';
-        END IF;
-    END IF;
-END//
-DELIMITER ;
-SET SQL_MODE=@OLDTMP_SQL_MODE;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
