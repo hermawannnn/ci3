@@ -187,24 +187,11 @@
                     
                     echo number_format($final_score, 2);
                     ?></td>
-                <td><?php 
-                    // Calculate class average using same formula
-                    $class_pt = isset($ratakelas_math['nilai_pt']) ? $ratakelas_math['nilai_pt'] : 0;
-                    $class_mt = isset($ratakelas_math['nilai_mt']) ? $ratakelas_math['nilai_mt'] : 0;
-                    $class_hw = isset($ratakelas_math['nilai_hw']) ? $ratakelas_math['nilai_hw'] : 0;
-                    $class_ex = isset($ratakelas_math['nilai_ex']) ? $ratakelas_math['nilai_ex'] : 0;
-                    $class_ft = isset($ratakelas_math['nilai_ft']) ? $ratakelas_math['nilai_ft'] : 0;
-
-                    // Apply 7% bonus to FT and cap at 100
-                    $class_ft_bonus = min($class_ft + ($class_ft * 0.07), 100);
-
-                    $class_average = ($class_pt * 0.10) +    // PT: 10%
-                                   ($class_mt * 0.15) +      // MT: 15%
-                                   ($class_hw * 0.20) +      // HW: 20%
-                                   ($class_ex * 0.25) +      // EX: 25%
-                                   ($class_ft_bonus * 0.30); // FT: +7% then 30%
-
-                    echo number_format($class_average, 2);
+                <td><?php
+                    // Math class average
+                    $ratakelas_math = $raporfinal_model->get_rata_kelas_detail($siswa['kelas_id'], 3); 
+                    $average = ($ratakelas_math['nilai_pt'] + $ratakelas_math['nilai_mt'] + $ratakelas_math['nilai_hw'] + $ratakelas_math['nilai_ex'] + $ratakelas_math['nilai_ft']) / 5;
+                    echo number_format($average, 2);
                 ?></td>
             </tr>
             <tr>
@@ -249,20 +236,11 @@
                     
                     echo number_format($final_score, 2);
                     ?></td>
-                <td><?php 
-                    // Calculate class average
-                    $class_pt = isset($ratakelas_english['nilai_pt']) ? $ratakelas_english['nilai_pt'] : 0;
-                    $class_mt = isset($ratakelas_english['nilai_mt']) ? $ratakelas_english['nilai_mt'] : 0;
-                    $class_hw = isset($ratakelas_english['nilai_hw']) ? $ratakelas_english['nilai_hw'] : 0;
-                    $class_ex = isset($ratakelas_english['nilai_ex']) ? $ratakelas_english['nilai_ex'] : 0;
-                    $class_ft = isset($ratakelas_english['nilai_ft']) ? $ratakelas_english['nilai_ft'] : 0;
-                    
-                    $class_ft_bonus = min($class_ft + ($class_ft * 0.07), 100);
-                    $class_average = ($class_pt * 0.10) + ($class_mt * 0.15) + 
-                                   ($class_hw * 0.20) + ($class_ex * 0.25) + 
-                                   ($class_ft_bonus * 0.30);
-                    
-                    echo number_format($class_average, 2);
+                <td><?php
+                    // English class average
+                    $ratakelas_english = $raporfinal_model->get_rata_kelas_detail($siswa['kelas_id'], 4); 
+                    $average = ($ratakelas_english['nilai_pt'] + $ratakelas_english['nilai_mt'] + $ratakelas_english['nilai_hw'] + $ratakelas_english['nilai_ex'] + $ratakelas_english['nilai_ft']) / 5;
+                    echo number_format($average, 2);
                 ?></td>
             </tr>
             <tr>
@@ -307,20 +285,11 @@
                     
                     echo number_format($final_score, 2);
                     ?></td>
-                <td><?php 
-                    // Calculate class average
-                    $class_pt = isset($ratakelas_science['nilai_pt']) ? $ratakelas_science['nilai_pt'] : 0;
-                    $class_mt = isset($ratakelas_science['nilai_mt']) ? $ratakelas_science['nilai_mt'] : 0;
-                    $class_hw = isset($ratakelas_science['nilai_hw']) ? $ratakelas_science['nilai_hw'] : 0;
-                    $class_ex = isset($ratakelas_science['nilai_ex']) ? $ratakelas_science['nilai_ex'] : 0;
-                    $class_ft = isset($ratakelas_science['nilai_ft']) ? $ratakelas_science['nilai_ft'] : 0;
-                    
-                    $class_ft_bonus = min($class_ft + ($class_ft * 0.07), 100);
-                    $class_average = ($class_pt * 0.10) + ($class_mt * 0.15) + 
-                                   ($class_hw * 0.20) + ($class_ex * 0.25) + 
-                                   ($class_ft_bonus * 0.30);
-                    
-                    echo number_format($class_average, 2);
+                <td><?php
+                    // Science class average
+                    $ratakelas_science = $raporfinal_model->get_rata_kelas_detail($siswa['kelas_id'], 5); 
+                    $average = ($ratakelas_science['nilai_pt'] + $ratakelas_science['nilai_mt'] + $ratakelas_science['nilai_hw'] + $ratakelas_science['nilai_ex'] + $ratakelas_science['nilai_ft']) / 5;
+                    echo number_format($average, 2);
                 ?></td>
             </tr>
             <tr>
@@ -365,20 +334,11 @@
                     
                     echo number_format($final_score, 2);
                     ?></td>
-                <td><?php 
-                    // Calculate class average
-                    $class_pt = isset($ratakelas_ict['nilai_pt']) ? $ratakelas_ict['nilai_pt'] : 0;
-                    $class_mt = isset($ratakelas_ict['nilai_mt']) ? $ratakelas_ict['nilai_mt'] : 0;
-                    $class_hw = isset($ratakelas_ict['nilai_hw']) ? $ratakelas_ict['nilai_hw'] : 0;
-                    $class_ex = isset($ratakelas_ict['nilai_ex']) ? $ratakelas_ict['nilai_ex'] : 0;
-                    $class_ft = isset($ratakelas_ict['nilai_ft']) ? $ratakelas_ict['nilai_ft'] : 0;
-                    
-                    $class_ft_bonus = min($class_ft + ($class_ft * 0.07), 100);
-                    $class_average = ($class_pt * 0.10) + ($class_mt * 0.15) + 
-                                   ($class_hw * 0.20) + ($class_ex * 0.25) + 
-                                   ($class_ft_bonus * 0.30);
-                    
-                    echo number_format($class_average, 2);
+                <td><?php
+                    // ICT class average
+                    $ratakelas_ict = $raporfinal_model->get_rata_kelas_detail($siswa['kelas_id'], 6); 
+                    $average = ($ratakelas_ict['nilai_pt'] + $ratakelas_ict['nilai_mt'] + $ratakelas_ict['nilai_hw'] + $ratakelas_ict['nilai_ex'] + $ratakelas_ict['nilai_ft']) / 5;
+                    echo number_format($average, 2);
                 ?></td>
             </tr>
             <tr class="table-secondary">
@@ -386,7 +346,7 @@
             </tr>
             <tr>
                 <!-- Tahfidz -->
-                <td>1</td>
+                <td>5</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[5]['nama_pelajaran']) ? $pelajaran[5]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     $pt_score = $mt_score = $hw_score = $ex_score = $ft_score = 0;
@@ -426,25 +386,16 @@
                     
                     echo number_format($final_score, 2);
                     ?></td>
-                <td><?php 
-                    // Calculate class average
-                    $class_pt = isset($ratakelas_tahfidz['nilai_pt']) ? $ratakelas_tahfidz['nilai_pt'] : 0;
-                    $class_mt = isset($ratakelas_tahfidz['nilai_mt']) ? $ratakelas_tahfidz['nilai_mt'] : 0;
-                    $class_hw = isset($ratakelas_tahfidz['nilai_hw']) ? $ratakelas_tahfidz['nilai_hw'] : 0;
-                    $class_ex = isset($ratakelas_tahfidz['nilai_ex']) ? $ratakelas_tahfidz['nilai_ex'] : 0;
-                    $class_ft = isset($ratakelas_tahfidz['nilai_ft']) ? $ratakelas_tahfidz['nilai_ft'] : 0;
-                    
-                    $class_ft_bonus = min($class_ft + ($class_ft * 0.07), 100);
-                    $class_average = ($class_pt * 0.10) + ($class_mt * 0.15) + 
-                                   ($class_hw * 0.20) + ($class_ex * 0.25) + 
-                                   ($class_ft_bonus * 0.30);
-                    
-                    echo number_format($class_average, 2);
+                <td><?php
+                    // Tahfidz class average
+                    $ratakelas_tahfidz = $raporfinal_model->get_rata_kelas_detail($siswa['kelas_id'], 10); 
+                    $average = ($ratakelas_tahfidz['nilai_pt'] + $ratakelas_tahfidz['nilai_mt'] + $ratakelas_tahfidz['nilai_hw'] + $ratakelas_tahfidz['nilai_ex'] + $ratakelas_tahfidz['nilai_ft']) / 5;
+                    echo number_format($average, 2);
                 ?></td>
             </tr>
             <tr>
                 <!-- Arabic -->
-                <td>2</td>
+                <td>6</td>
                 <td style="text-align: left;"><?php echo isset($pelajaran[4]['nama_pelajaran']) ? $pelajaran[4]['nama_pelajaran'] : 'N/A'; ?></td>
                 <td><?php
                     $pt_score = $mt_score = $hw_score = $ex_score = $ft_score = 0;
@@ -484,21 +435,65 @@
                     
                     echo number_format($final_score, 2);
                     ?></td>
-                <td><?php 
-                    // Calculate class average
-                    $class_pt = isset($ratakelas_arabic['nilai_pt']) ? $ratakelas_arabic['nilai_pt'] : 0;
-                    $class_mt = isset($ratakelas_arabic['nilai_mt']) ? $ratakelas_arabic['nilai_mt'] : 0;
-                    $class_hw = isset($ratakelas_arabic['nilai_hw']) ? $ratakelas_arabic['nilai_hw'] : 0;
-                    $class_ex = isset($ratakelas_arabic['nilai_ex']) ? $ratakelas_arabic['nilai_ex'] : 0;
-                    $class_ft = isset($ratakelas_arabic['nilai_ft']) ? $ratakelas_arabic['nilai_ft'] : 0;
-                    
-                    $class_ft_bonus = min($class_ft + ($class_ft * 0.07), 100);
-                    $class_average = ($class_pt * 0.10) + ($class_mt * 0.15) + 
-                                   ($class_hw * 0.20) + ($class_ex * 0.25) + 
-                                   ($class_ft_bonus * 0.30);
-                    
-                    echo number_format($class_average, 2);
+                <td><?php
+                    // Arabic class average
+                    $ratakelas_arabic = $raporfinal_model->get_rata_kelas_detail($siswa['kelas_id'], 8); 
+                    $average = ($ratakelas_arabic['nilai_pt'] + $ratakelas_arabic['nilai_mt'] + $ratakelas_arabic['nilai_hw'] + $ratakelas_arabic['nilai_ex'] + $ratakelas_arabic['nilai_ft']) / 5;
+                    echo number_format($average, 2);
                 ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Total</strong></td>
+                <td colspan="2"><strong><?php
+                    $total_score = 0;
+                    foreach ($pelajaran as $index => $subject) {
+                        $subject_id = $subject['id'];
+                        $pt_score = $mt_score = $hw_score = $ex_score = $ft_score = 0;
+
+                        // Get PT and MT scores
+                        foreach ($nilai_mid['mid'] as $nilaimid) {
+                            if ($nilaimid['pelajaran_id'] == $subject_id) {
+                                $pt_score = $nilaimid['nilai_pt'];
+                                $mt_score = $nilaimid['nilai_mt'];
+                                break;
+                            }
+                        }
+
+                        // Get HW, EX and FT scores
+                        $hw_total = $hw_count = $ex_total = $ex_count = 0;
+                        foreach ($nilai_mid['final'] as $nilaifinal) {
+                            if ($nilaifinal['pelajaran_id'] == $subject_id) {
+                                if ($nilaifinal['jenisnilai'] == 'hw') {
+                                    $hw_total += $nilaifinal['nilai'];
+                                    $hw_count++;
+                                }
+                                if ($nilaifinal['jenisnilai'] == 'ex') {
+                                    $ex_total += $nilaifinal['nilai'];
+                                    $ex_count++;
+                                }
+                                if ($nilaifinal['jenisnilai'] == 'ft') $ft_score = $nilaifinal['nilai'];
+                            }
+                        }
+
+                        $hw_score = $hw_count > 0 ? $hw_total / $hw_count : 0;
+                        $ex_score = $ex_count > 0 ? $ex_total / $ex_count : 0;
+                        $ft_with_bonus = min($ft_score + ($ft_score * 0.07), 100);
+
+                        $final_score = ($pt_score * 0.10) + ($mt_score * 0.15) +
+                                     ($hw_score * 0.20) + ($ex_score * 0.25) +
+                                     ($ft_with_bonus * 0.30);
+
+                        $total_score += $final_score;
+                    }
+                    echo number_format($total_score, 2);
+                ?></strong></td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Average</strong></td>
+                <td colspan="2"><strong><?php
+                    $average_score = count($pelajaran) > 0 ? $total_score / count($pelajaran) : 0;
+                    echo number_format($average_score, 2);
+                ?></strong></td>
             </tr>
         </tbody>
     </table>
@@ -518,7 +513,7 @@
         </tbody>
     </table>
 
-    <p style=" text-align: center; margin-top: 30px;">Jakarta, March 20<sup>th</sup>, 2025</p>
+    <p style=" text-align: center; margin-top: 30px;">Jakarta, June 17<sup>th</sup>, 2025</p>
 
     <table style="width: 100%; margin-top: 20px; border: none;">
         <tr style="text-align: center;">

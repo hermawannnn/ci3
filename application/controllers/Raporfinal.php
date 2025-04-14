@@ -45,6 +45,7 @@ class Raporfinal extends CI_Controller {
         
         $data['walikelas'] = $this->raporfinal_model->get_wali_kelas($kelas_id);
         $data['deskripsi_nilai'] = $this->raporfinal_model->get_deskripsi_nilai($siswa_id);
+        $data['raporfinal_model'] = $this->raporfinal_model; // Add this line
         
         // Load view for printing
         $this->load->view('print_raporfinal_view', $data);

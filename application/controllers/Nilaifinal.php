@@ -11,6 +11,7 @@ class Nilaifinal extends CI_Controller
         }
         $this->load->helper('url');
         $this->load->model('Nilaifinal_model');
+        $this->load->model('Raporfinal_model'); // Add this line
     }
 
     public function index()
