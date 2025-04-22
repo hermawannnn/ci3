@@ -3,7 +3,7 @@
   <strong>Copyright &copy; IT Division | Ananda Islamic School</a>.</strong>
   All rights reserved.
   <div class="float-right d-none d-sm-inline-block">
-    <b>Version</b> 1.0.0
+    <b>Version</b> Final 1.0.0
   </div>
 </footer>
 </div>
